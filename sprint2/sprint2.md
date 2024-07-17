@@ -61,4 +61,34 @@ JOIN company ON transaction.company_id = company.id;
 ```
 
 ### Imagen de  Listado de los países que están realizando compras:
-![Diagrama del Esquema](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_pais.PNG)
+![Listado de los países que están realizando compra](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_pais.PNG)
+
+## Consulta 2: Desde cuántos países se realizan las compras
+
+```sql
+SELECT COUNT(DISTINCT company.country) AS total_countries
+FROM transaction
+JOIN company ON transaction.company_id = company.id;
+```
+
+### Imagen de  Listado de cuántos países se realizan las compras:
+![Listado de cuántos países se realizan las compras](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_nro_pais.PNG)
+
+## Consulta 3: Identifica a la compañía con la mayor media de ventass
+
+```sql
+SELECT company.company_name, AVG(transaction.amount) AS avg_sales
+FROM transaction
+JOIN company ON transaction.company_id = company.id
+GROUP BY company.company_name
+ORDER BY avg_sales DESC
+LIMIT 1;
+```
+
+### Imagen de consulta Identifica a la compañía con la mayor media de ventas:
+![Listado de cuántos países se realizan las compras](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_company.PNG)
+
+
+
+
+
