@@ -1,21 +1,57 @@
 # Ejercicio 1:  principales características del esquema creado y explica las diferentes tablas y variables 
 
-## Pasos para Importar las Tablas
+# Esquema de Base de Datos: Company y Transaction
 
-### Crear una Nueva Base de Datos
-1. Inicia MySQL Workbench.
-2. Crea una nueva base de datos llamada `mi_base_de_datos`.
+El esquema creado incluye dos tablas principales: `company` y `transaction`. A continuación, se describen estas tablas y las variables que contienen, así como las relaciones entre ellas.
 
-### Importar la Estructura de Datos
-1. Abre el archivo `estructura_dades.sql` en MySQL Workbench.
-2. Ejecuta el script para crear la estructura de las tablas.
+## Tabla `company`
 
-### Importar los Datos
-1. Abre el archivo `dades_introduir.sql` en MySQL Workbench.
-2. Ejecuta el script para poblar las tablas con los datos.
+Esta tabla almacena información sobre las empresas involucradas en las transacciones. Contiene los siguientes campos:
 
-## Exploración del Esquema
+- **id**: Identificador único de la empresa (VARCHAR(15)).
+- **company_name**: Nombre de la empresa (VARCHAR(255)).
+- **phone**: Número de teléfono de la empresa (VARCHAR(15)).
+- **email**: Dirección de correo electrónico de la empresa (VARCHAR(100)).
+- **country**: País de la empresa (VARCHAR(100)).
+- **website**: Sitio web de la empresa (VARCHAR(255)).
 
-### Mostrar las Tablas Existentes
-```sql
-SHOW TABLES;
+## Tabla `transaction`
+
+Esta tabla registra las transacciones realizadas y contiene los siguientes campos:
+
+- **id**: Identificador único de la transacción (VARCHAR(255)).
+- **credit_card_id**: Identificador de la tarjeta de crédito utilizada en la transacción (VARCHAR(15)).
+- **company_id**: Identificador de la empresa involucrada en la transacción (VARCHAR(20)), referencia a `company(id)`.
+- **user_id**: Identificador del usuario que realiza la transacción (INT), referencia a `user(id)`.
+- **lat**: Latitud de la ubicación donde se realizó la transacción (FLOAT).
+- **longitude**: Longitud de la ubicación donde se realizó la transacción (FLOAT).
+- **timestamp**: Marca de tiempo de la transacción (TIMESTAMP).
+- **amount**: Monto de la transacción (DECIMAL(10, 2)).
+- **declined**: Indica si la transacción fue rechazada (BOOLEAN).
+
+## Relaciones Entre las Tablas
+
+Las tablas están relacionadas de la siguiente manera:
+
+- La tabla `transaction` tiene una clave foránea `company_id` que referencia a `company(id)`.
+- La tabla `transaction` también tiene una clave foránea `user_id` que referencia a `user(id)`, aunque no se proporcionaron detalles de la tabla `user` en el esquema actual.
+
+## Diagrama del Esquema
+
+A continuación se presenta un diagrama que ilustra la relación entre las tablas `company` y `transaction`:
+
+```plaintext
++-------------+           +--------------+
+|   company   |           | transaction  |
++-------------+           +--------------+
+| id (PK)     |<--------->| company_id (FK) |
+| company_name|           | id (PK)         |
+| phone       |           | credit_card_id  |
+| email       |           | user_id (FK)    |
+| country     |           | lat             |
+| website     |           | longitude       |
++-------------+           | timestamp       |
+                          | amount          |
+                          | declined        |
+                          +--------------+
+
