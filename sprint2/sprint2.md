@@ -47,7 +47,7 @@ A continuación se presenta un diagrama que ilustra la relación entre las tabla
 ![Diagrama del Esquema](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/trans01.png)
 
 
-### SQL - Company y Transaction:
+## SQL - Company y Transaction:
 [Ver Estrucutra SQL](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/sql/estructura_dades.sql)
 
 
@@ -96,9 +96,46 @@ LIMIT 1;
 ## Consulta 1: Muestra todas las transacciones realizadas por empresas de Alemania.
 
 ```sql
-
+SELECT *
+FROM transaction
+WHERE company_id IN (
+    SELECT id
+    FROM company
+    WHERE country = 'Germany'
+);
 ```
+### Imagen de consulta todas las transacciones realizadas por empresas de Alemania.:
+![Listado de cuántos países se realizan las compras](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_germany.PNG)
 
+
+## Consulta 2: Lista las empresas que han realizado transacciones por un amount superior a la media de todas las transacciones.
+
+```sql
+SELECT *
+FROM transaction
+WHERE company_id IN (
+    SELECT id
+    FROM company
+    WHERE country = 'Germany'
+);
+```
+### Imagen de consulta  empresas que han realizado transacciones por un amount superior a la media de todas las transacciones:
+![Listado empresas que han realizado transacciones por un amount superior a la media de todas las transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_media.PNG)
+
+
+
+## Consulta 3: Eliminar del sistema las empresas que carecen de transacciones registradas, entrega el listado de estas empresas..
+
+```sql
+SELECT *
+FROM company
+WHERE id NOT IN (
+    SELECT DISTINCT company_id
+    FROM transaction
+);
+```
+### Imagen de consulta  empresas que han realizado transacciones por un amount superior a la media de todas las transacciones:
+![Listado empresas que han realizado transacciones por un amount superior a la media de todas las transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_media.PNG)
 
 <hr>
 
