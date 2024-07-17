@@ -1,6 +1,6 @@
-# Ejercicio 1:  principales características del esquema creado y explica las diferentes tablas y variables 
-
 # Esquema de Base de Datos: Company y Transaction
+
+![IT Academy Logo](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/logoIT.png)
 
 El esquema creado incluye dos tablas principales: `company` y `transaction`. A continuación, se describen estas tablas y las variables que contienen, así como las relaciones entre ellas.
 
@@ -38,20 +38,10 @@ Las tablas están relacionadas de la siguiente manera:
 
 ## Diagrama del Esquema
 
+A continuación se presenta un diagrama que ilustra la relación entre las tablas `company`
+
 A continuación se presenta un diagrama que ilustra la relación entre las tablas `company` y `transaction`:
 
-```plaintext
-+-------------+           +--------------+
-|   company   |           | transaction  |
-+-------------+           +--------------+
-| id (PK)     |<--------->| company_id (FK) |
-| company_name|           | id (PK)         |
-| phone       |           | credit_card_id  |
-| email       |           | user_id (FK)    |
-| country     |           | lat             |
-| website     |           | longitude       |
-+-------------+           | timestamp       |
-                          | amount          |
-                          | declined        |
-                          +--------------+
+![IT Academy Logo](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/trans01.png)
+
 
