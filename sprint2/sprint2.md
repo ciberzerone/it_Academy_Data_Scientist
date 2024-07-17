@@ -1,6 +1,6 @@
 ![IT Academy Logo](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/logoIT.png)
 
-(https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/nivel1.png)
+![Nivel 1](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/nivel1.png)
 
 # Ejercicio 1: Esquema de Base de Datos: Company y Transaction
 
@@ -91,6 +91,10 @@ LIMIT 1;
 ![Listado de cuántos países se realizan las compras](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_company.PNG)
 
 
+![Nivel 2](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/nivel2.png)
+# Ejercicio 1: Esquema de Base de Datos: Company y Transaction
+
+El esquema creado incluye dos tablas principales: `company` y 
 
 
 
