@@ -1,6 +1,6 @@
-# Esquema de Base de Datos: Company y Transaction
-
 ![IT Academy Logo](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/logoIT.png)
+
+# Ejercicio 1: Esquema de Base de Datos: Company y Transaction
 
 El esquema creado incluye dos tablas principales: `company` y `transaction`. A continuación, se describen estas tablas y las variables que contienen, así como las relaciones entre ellas.
 
@@ -42,6 +42,23 @@ A continuación se presenta un diagrama que ilustra la relación entre las tabla
 
 A continuación se presenta un diagrama que ilustra la relación entre las tablas `company` y `transaction`:
 
-![IT Academy Logo](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/trans01.png)
+![Diagrama del Esquema](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/trans01.png)
 
 
+### SQL - Company y Transaction:
+[Ver Estrucutra SQL](https://github.com/ciberzerone/baseDatos/blob/main/lab01/sql/estructura_dades.sql)
+
+
+
+# Ejercicio 2: Consultas SQL para el Esquema de Base de Datos
+
+## Consulta 1: Listado de los países que están realizando compras
+
+```sql
+SELECT DISTINCT company.country
+FROM transaction
+JOIN company ON transaction.company_id = company.id;
+```
+
+### Imagen de  Listado de los países que están realizando compras:
+![Diagrama del Esquema](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_pais.PNG)
