@@ -46,7 +46,7 @@ A continuación se presenta un diagrama que ilustra la relación entre las tabla
 
 
 ### SQL - Company y Transaction:
-[Ver Estrucutra SQL](https://github.com/ciberzerone/baseDatos/blob/main/lab01/sql/estructura_dades.sql)
+[Ver Estrucutra SQL](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/sql/estructura_dades.sql)
 
 
 
