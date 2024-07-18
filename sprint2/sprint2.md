@@ -157,6 +157,17 @@ WHERE id NOT IN (
 ### Imagen de aplicacion de sql con el registro insertado:
 ![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete01.PNG)
 
+
+### Ejecutar la consulta de eliminación
+```sql
+DELETE FROM company
+WHERE id NOT IN (
+    SELECT DISTINCT company_id
+    FROM transaction
+);
+```
+### Imagen de aplicacion de sql con el registro insertado:
+![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete04.PNG)
 <hr>
 
 
