@@ -134,15 +134,30 @@ WHERE id NOT IN (
     FROM transaction
 );
 ```
-### Imagen de consulta  empresas que han realizado transacciones por un amount superior a la media de todas las transacciones:
-![Listado empresas que han realizado transacciones por un amount superior a la media de todas las transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_media.PNG)
+### Imagen de consulta  empresas que carecen de transacciones registradas:
+![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete03.PNG)
+### Para probarlo inserte un registro en la tabla company
+```sql
+USE transactions;
+INSERT INTO company (id, company_name, phone, email, country, website) VALUES (        'b-2124', 'No tute', '06 77 15 31 14', 'amus@protonmail.couk', 'United Kingdom', 'https://gua.co.uk/settings');
+```
+### Imagen de sql inserte un registro en la tabla company:
+![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete02.PNG)
+
+
+### Imagen de consulta  empresas que carecen de transacciones registradas:
+```sql
+SELECT *
+FROM company
+WHERE id NOT IN (
+    SELECT DISTINCT company_id
+    FROM transaction
+);
+```
+### Imagen de aplicacion de sql con el registro insertado:
+![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete01.PNG)
 
 <hr>
-
-![Nivel 2](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/nivel2.PNG)
-# Ejercicio 1: Esquema de Base de Datos: Company y Transaction
-
-El esquema creado incluye dos tablas principales: `company` y 
 
 
 
