@@ -1,7 +1,7 @@
 
 # IT Academy Data Scientist Exercises
 
-![IT Academy Logo](!(https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/logoIT.png))
+![IT Academy Logo](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/logoIT.png)
 
 ## Descripción
 
