@@ -9,10 +9,7 @@ Este repositorio contiene los ejercicios del curso de Data Scientist en IT Acade
 
 ## Contenidos del Repositorio
 
-- **Ejercicio 1: Introducción a Python**
-  - Descripción: Ejercicios básicos para familiarizarse con la sintaxis de Python.
-  - Archivos: `ejercicio1.ipynb`
-- **Ejercicio 2: Manipulación de Datos con Pandas**
+- **Sprint 2 :  BBDD relaciones y introducion SQL**
   - Descripción: Uso de la biblioteca Pandas para la manipulación y análisis de datos.
   - Archivos: `ejercicio2.ipynb`
 - **Ejercicio 3: Visualización de Datos**
