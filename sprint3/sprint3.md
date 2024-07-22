@@ -1,47 +1,58 @@
 ![IT Academy Logo](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/logoIT.png)
 
 
-[Ver base datos en SQL](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/sql/bbdd.sql)
+[Ver script de SQL](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/sql/bbdd.sql)
 
-[Ver Sprint en PDF](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/pdf/sprint2.pdf)
+[Ver Sprint 3 en PDF](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/pdf/sprint2.pdf)
 
 ![Nivel 1](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/nivel1.PNG)
 
-# Ejercicio 1: Esquema de Base de Datos: Company y Transaction
+# Ejercicio 1:
 
 El esquema creado incluye dos tablas principales: `company` y `transaction`. A continuación, se describen estas tablas y las variables que contienen, así como las relaciones entre ellas.
 
-## Tabla `company`
+## Diseño de la Tabla  `credit_card`
 
-Esta tabla almacena información sobre las empresas involucradas en las transacciones. Contiene los siguientes campos:
+Esta tabla almacena información sobre las tarjetas de creditos involucradas en las transacciones. Contiene los siguientes campos:
 
-- **id**: Identificador único de la empresa (VARCHAR(15)).
-- **company_name**: Nombre de la empresa (VARCHAR(255)).
-- **phone**: Número de teléfono de la empresa (VARCHAR(15)).
-- **email**: Dirección de correo electrónico de la empresa (VARCHAR(100)).
-- **country**: País de la empresa (VARCHAR(100)).
-- **website**: Sitio web de la empresa (VARCHAR(255)).
+### Columnas:
 
-## Tabla `transaction`
+- **id**: Identificador único de la tarjeta de crédito.
+- **iban**: Número IBAN de la tarjeta.
+- **pan**: Número PAN de la tarjeta.
+- **pin**: PIN de la tarjeta.
+- **cvv**: Código CVV de la tarjeta.
+- **expiring_date**: Fecha de vencimiento de la tarjeta.
 
-Esta tabla registra las transacciones realizadas y contiene los siguientes campos:
+### Claves y Relaciones:
 
-- **id**: Identificador único de la transacción (VARCHAR(255)).
-- **credit_card_id**: Identificador de la tarjeta de crédito utilizada en la transacción (VARCHAR(15)).
-- **company_id**: Identificador de la empresa involucrada en la transacción (VARCHAR(20)), referencia a `company(id)`.
-- **user_id**: Identificador del usuario que realiza la transacción (INT), referencia a `user(id)`.
-- **lat**: Latitud de la ubicación donde se realizó la transacción (FLOAT).
-- **longitude**: Longitud de la ubicación donde se realizó la transacción (FLOAT).
-- **timestamp**: Marca de tiempo de la transacción (TIMESTAMP).
-- **amount**: Monto de la transacción (DECIMAL(10, 2)).
-- **declined**: Indica si la transacción fue rechazada (BOOLEAN).
+- **id**: Clave primaria.
 
-## Relaciones Entre las Tablas
 
-Las tablas están relacionadas de la siguiente manera:
+## Sql de tabla  `credit_card`
 
-- La tabla `transaction` tiene una clave foránea `company_id` que referencia a `company(id)`.
-- La tabla `transaction` también tiene una clave foránea `user_id` que referencia a `user(id)`, aunque no se proporcionaron detalles de la tabla `user` en el esquema actual.
+```sql
+-- Creacion la tabla credit_card
+CREATE TABLE IF NOT EXISTS credit_card (
+    id VARCHAR(15) PRIMARY KEY,
+    iban VARCHAR(34),
+    pan VARCHAR(19),
+    pin VARCHAR(4),
+    cvv VARCHAR(4),
+    expiring_date DATE
+);
+
+```
+## Introducir la data en la  `credit_card`
+Al insertar los datos, arroja un error por el formato de los datos expiring_date, una solucion podria ser utilizar varchar, pero se utizo STR_TO_DATE(cadena, formato) que convierte los datos de una cadena a un formato de fecha
+
+```sql
+-- convertirá la cadena '10/30/22' en la fecha 2022-10-30.
+('CcU-2938', 'TR301950312213576817638661', '5424465566813633', '3257', '984', STR_TO_DATE('10/30/22', '%m/%d/%y')),
+
+```
+
+## Introducir la data en la  `credit_card`
 
 ## Diagrama del Esquema
 
