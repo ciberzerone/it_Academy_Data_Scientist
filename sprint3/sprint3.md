@@ -71,7 +71,7 @@ FOREIGN KEY (credit_card_id) REFERENCES credit_card(id);
 
 ## Diagrama del Esquema
 
-A continuación se presenta un diagrama que ilustra la relación entre las tablas  `credit_card`, `company` y `transaction`:
+A continuación se presenta un diagrama que ilustra la relación entre las tablas `user`, `credit_card`, `company` y `transaction`:
 
 ![Diagrama del Esquema](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje01ER.PNG)
 
