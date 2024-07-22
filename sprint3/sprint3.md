@@ -52,7 +52,20 @@ Al insertar los datos, arroja un error por el formato de los datos expiring_date
 
 ```
 
-## Introducir la data en la  `credit_card`
+##  Identificar de forma única cada tarjeta en la  `credit_card`
+
+
+```sql
+    id VARCHAR(15) PRIMARY KEY,
+
+```
+
+##  Establecer  relación con la tabla `transaction`
+
+```sql
+    id VARCHAR(15) PRIMARY KEY,
+
+```
 
 ## Diagrama del Esquema
 
@@ -60,7 +73,7 @@ A continuación se presenta un diagrama que ilustra la relación entre las tabla
 
 A continuación se presenta un diagrama que ilustra la relación entre las tablas `company` y `transaction`:
 
-![Diagrama del Esquema](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/trans01.png)
+![Diagrama del Esquema](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje01ER.PNG)
 
 
 
