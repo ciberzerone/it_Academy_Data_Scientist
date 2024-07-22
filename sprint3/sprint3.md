@@ -63,15 +63,15 @@ Al insertar los datos, arroja un error por el formato de los datos expiring_date
 ##  Establecer  relación con la tabla `transaction`
 
 ```sql
-    id VARCHAR(15) PRIMARY KEY,
+ALTER TABLE transaction
+ADD CONSTRAINT fk_credit_card
+FOREIGN KEY (credit_card_id) REFERENCES credit_card(id);
 
 ```
 
 ## Diagrama del Esquema
 
-A continuación se presenta un diagrama que ilustra la relación entre las tablas `company`
-
-A continuación se presenta un diagrama que ilustra la relación entre las tablas `company` y `transaction`:
+A continuación se presenta un diagrama que ilustra la relación entre las tablas  `credit_card`, `company` y `transaction`:
 
 ![Diagrama del Esquema](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje01ER.PNG)
 
