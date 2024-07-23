@@ -78,110 +78,32 @@ A continuación se presenta un diagrama que ilustra la relación entre las tabla
 
 
 
-# Ejercicio 2: Consultas SQL para el Esquema de Base de Datos
+# Ejercicio 2:  Actualizar número de cuenta del usuario con ID CcU-2938. 
 
-## Consulta 1: Listado de los países que están realizando compras
+## Consulta 1: La información que debe mostrarse para este registro es: R323456312213576817699999.
+
+### Sql es Mostrar ID CcU-2938
 
 ```sql
-SELECT DISTINCT company.country
-FROM transaction
-JOIN company ON transaction.company_id = company.id;
+USE transactions;
+SELECT * FROM credit_card
+WHERE id = 'CcU-2938';
+```
+
+
+### Imagen de Mostrar ID CcU-2938:
+![Listado de los países que están realizando compra](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_pais.PNG)
+
+
+
+```sql
+CREATE INDEX idx_credit_card_iban ON credit_card(iban);
+CREATE INDEX idx_credit_card_pan ON credit_card(pan);
 ```
 
 ### Imagen de  Listado de los países que están realizando compras:
 ![Listado de los países que están realizando compra](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_pais.PNG)
 
-## Consulta 2: Desde cuántos países se realizan las compras
-
-```sql
-SELECT COUNT(DISTINCT company.country) AS total_countries
-FROM transaction
-JOIN company ON transaction.company_id = company.id;
-```
-
-### Imagen de  Listado de cuántos países se realizan las compras:
-![Listado de cuántos países se realizan las compras](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_nro_pais.PNG)
-
-## Consulta 3: Identifica a la compañía con la mayor media de ventass
-
-```sql
-SELECT company.company_name, AVG(transaction.amount) AS avg_sales
-FROM transaction
-JOIN company ON transaction.company_id = company.id
-GROUP BY company.company_name
-ORDER BY avg_sales DESC
-LIMIT 1;
-```
-
-### Imagen de consulta Identifica a la compañía con la mayor media de ventas:
-![Listado de cuántos países se realizan las compras](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_company.PNG)
-
-
-# Ejercicio 3: SubConsultas SQL  sin utilizar JOIN
-
-## Consulta 1: Muestra todas las transacciones realizadas por empresas de Alemania.
-
-```sql
-SELECT *
-FROM transaction
-WHERE company_id IN (
-    SELECT id
-    FROM company
-    WHERE country = 'Germany'
-);
-```
-### Imagen de consulta todas las transacciones realizadas por empresas de Alemania.:
-![Listado de cuántos países se realizan las compras](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_germany.PNG)
-
-
-## Consulta 2: Lista las empresas que han realizado transacciones por un amount superior a la media de todas las transacciones.
-
-```sql
-SELECT *
-FROM transaction
-WHERE company_id IN (
-    SELECT id
-    FROM company
-    WHERE country = 'Germany'
-);
-```
-### Imagen de consulta  empresas que han realizado transacciones por un amount superior a la media de todas las transacciones:
-![Listado empresas que han realizado transacciones por un amount superior a la media de todas las transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_media.PNG)
-
-
-
-## Consulta 3: Eliminar del sistema las empresas que carecen de transacciones registradas, entrega el listado de estas empresas..
-
-```sql
-SELECT *
-FROM company
-WHERE id NOT IN (
-    SELECT DISTINCT company_id
-    FROM transaction
-);
-```
-### Imagen de consulta  empresas que carecen de transacciones registradas:
-![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete03.PNG)
-### Para probarlo inserte un registro en la tabla company
-```sql
-USE transactions;
-INSERT INTO company (id, company_name, phone, email, country, website) VALUES (        'b-2124', 'No tute', '06 77 15 31 14', 'amus@protonmail.couk', 'United Kingdom', 'https://gua.co.uk/settings');
-```
-### Imagen de sql inserte un registro en la tabla company:
-![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete02.PNG)
-
-
-### Imagen de consulta  empresas que carecen de transacciones registradas:
-```sql
-SELECT *
-FROM company
-WHERE id NOT IN (
-    SELECT DISTINCT company_id
-    FROM transaction
-);
-```
-### Imagen de aplicacion de sql con el registro insertado:
-![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete01.PNG)
 
 
 ### Ejecutar la consulta de eliminación
