@@ -76,7 +76,9 @@ A continuación se presenta un diagrama que ilustra la relación entre las tabla
 ![Diagrama del Esquema](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje01ER.PNG)
 
 
+
 <hr>
+
 
 # Ejercicio 2:  Actualizar número de cuenta del usuario con ID CcU-2938. 
 
@@ -92,31 +94,17 @@ WHERE id = 'CcU-2938';
 
 
 ### Imagen de Mostrar ID CcU-2938:
-![Listado de los países que están realizando compra](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_pais.PNG)
+![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje02_actualizar01.PNG)
 
-
+### Sql Actualizacion del campo Iban del id CcU-2938
 
 ```sql
-CREATE INDEX idx_credit_card_iban ON credit_card(iban);
-CREATE INDEX idx_credit_card_pan ON credit_card(pan);
+USE transactions;
+UPDATE credit_card
+SET iban = 'R323456312213576817699999'
+WHERE id = 'CcU-2938';
 ```
 
-### Imagen de  Listado de los países que están realizando compras:
-![Listado de los países que están realizando compra](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_pais.PNG)
-
-
-
-### Ejecutar la consulta de eliminación
-```sql
-DELETE FROM company
-WHERE id NOT IN (
-    SELECT DISTINCT company_id
-    FROM transaction
-);
-```
-### Imagen de aplicacion de sql con el registro insertado:
-![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete04.PNG)
-<hr>
-
-
+### Imagen de sql de la Actualizacion del campo Iban del id CcU-2938:
+![sql de la Actualizacion del campo Iban del id CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje02_actualizar02.PNG)
 
