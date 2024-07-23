@@ -96,6 +96,7 @@ WHERE id = 'CcU-2938';
 ### Imagen de Mostrar ID CcU-2938:
 ![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje02_actualizar01.PNG)
 
+
 ### Sql Actualizacion del campo Iban del id CcU-2938
 
 ```sql
@@ -107,4 +108,33 @@ WHERE id = 'CcU-2938';
 
 ### Imagen de sql de la Actualizacion del campo Iban del id CcU-2938:
 ![sql de la Actualizacion del campo Iban del id CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje02_actualizar02.PNG)
+
+### Sql Mostrar campo Iban del id CcU-2938 actualizado
+
+```sql
+SELECT * FROM credit_card
+WHERE id = 'CcU-2938';
+```
+
+### Imagen de  Sql Mostrar campo Iban del id CcU-2938 actualizado:
+![Sql Mostrar campo Iban del id CcU-2938 actualizado](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje02_actualizar03.PNG)
+
+<hr>
+
+
+# Ejercicio 2:  En la tabla `transaction` ingresar un nuevo usuario. 
+
+## Consulta 1: La información que debe mostrarse para este registro es: R323456312213576817699999.
+
+### Sql es Mostrar ID CcU-2938
+
+```sql
+USE transactions;
+SELECT * FROM credit_card
+WHERE id = 'CcU-2938';
+```
+
+
+### Imagen de Mostrar ID CcU-2938:
+![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje02_actualizar01.PNG)
 
