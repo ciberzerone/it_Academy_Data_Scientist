@@ -124,7 +124,11 @@ WHERE id = 'CcU-2938';
 
 # Ejercicio 2:  En la tabla `transaction` ingresar un nuevo usuario. 
 
-## Consulta 1: La información que debe mostrarse para este registro es: R323456312213576817699999.
+## Consulta 1: Ingresar los siguientes datos:
+
+### Imagen de  Datos a ingresar:
+![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje02_actualizar01.PNG)
+
 
 ### Sql es Mostrar ID CcU-2938
 
