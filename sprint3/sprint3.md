@@ -76,7 +76,7 @@ A continuación se presenta un diagrama que ilustra la relación entre las tabla
 ![Diagrama del Esquema](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje01ER.PNG)
 
 
-
+<hr>
 
 # Ejercicio 2:  Actualizar número de cuenta del usuario con ID CcU-2938. 
 
