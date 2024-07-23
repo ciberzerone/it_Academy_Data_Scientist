@@ -127,7 +127,7 @@ WHERE id = 'CcU-2938';
 ## Consulta 1: Ingresar los siguientes datos:
 
 ### Imagen de  Datos a ingresar:
-![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje02_actualizar01.PNG)
+![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje03_insertar01.PNG)
 
 
 ### Sql es Mostrar ID CcU-2938
