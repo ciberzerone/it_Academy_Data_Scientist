@@ -81,7 +81,7 @@ JOIN company ON transaction.company_id = company.id;
 ## Consulta 3: Identificar a la compañía con la mayor media de ventas
 
 ```sql 
-SELECT company.company_name, AVG(transaction.amount) AS avg_sales
+SELECT company.company_name, ROUND(AVG(transaction.amount),2) AS avg_sales
 FROM transaction
 JOIN company ON transaction.company_id = company.id
 GROUP BY company.company_name
