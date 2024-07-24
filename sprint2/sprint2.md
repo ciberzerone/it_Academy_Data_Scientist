@@ -68,29 +68,28 @@ JOIN company ON transaction.company_id = company.id;
 ![Listado de los países que están realizando compra](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_pais.PNG)
 
 
-### Explicacion:
 ### Explicación del Código
 
 **SELECT:**
-Esta cláusula se utiliza para especificar qué columnas queremos recuperar de la base de datos.
+Para especificar qué columnas queremos recuperar de la base de datos.
 
 **DISTINCT:**
-La palabra clave DISTINCT se utiliza para eliminar filas duplicadas del resultado. En este caso, asegurará que solo se devuelvan países únicos, sin repeticiones.
+Para eliminar filas duplicadas del resultado. En este caso, asegurará que solo se devuelvan países únicos.
 
 **company.country:**
-Aquí estamos especificando que queremos seleccionar la columna `country` de la tabla `company`.
+Para seleccionar la columna `country` de la tabla `company`.
 
 **FROM transaction:**
-Esta cláusula indica de qué tabla principal queremos recuperar los datos, en este caso, la tabla `transaction`.
+Para recuperar los datos de la tabla `transaction`.
 
 **JOIN company ON transaction.company_id = company.id:**
-- **JOIN:** La cláusula JOIN se utiliza para combinar filas de dos o más tablas basadas en una condición relacionada entre ellas.
+- **JOIN:** Para combinar filas de dos o más tablas basadas en una condición relacionada entre ellas.
 - **company:** Es la tabla que estamos uniendo con la tabla `transaction`.
-- **ON transaction.company_id = company.id:** Aquí estamos especificando la condición de unión. Esta condición indica que queremos combinar las filas de ambas tablas donde el valor de `company_id` en la tabla `transaction` coincide con el valor de `id` en la tabla `company`.
+- **ON transaction.company_id = company.id:** especifica la condición de combinar las filas de ambas tablas donde el valor de `company_id` en la tabla `transaction` coincide con el valor de `id` en la tabla `company`.
 
 ### Lo que hace la consulta:
 
-- **Unión de tablas:** La consulta une la tabla `transaction` con la tabla `company` utilizando el campo `company_id` en `transaction` y el campo `id` en `company`. Esto permite acceder a los datos de ambas tablas en una sola consulta.
+- **Unión de tablas:**  unir la tabla `transaction` con la tabla `company` utilizando el campo `company_id` en `transaction` y el campo `id` en `company` para acceder a los datos de ambas tablas en una sola consulta.
 - **Selección de países únicos:** Después de unir las tablas, la consulta selecciona los valores únicos de la columna `country` de la tabla `company`.
 
 
@@ -105,6 +104,26 @@ JOIN company ON transaction.company_id = company.id;
 
 ### Imagen de  Listado de cuántos países se realizan las compras: 
 ![Listado de cuántos países se realizan las compras](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_nro_pais.PNG)
+
+### Explicación del Código
+
+**SELECT COUNT(DISTINCT company.country) AS total_countries:**
+- **SELECT:** Para especificar qué columnas o expresiones queremos recuperar de la base de datos.
+- **COUNT(DISTINCT company.country):** La función `COUNT` para contar el número de filas. `DISTINCT` dentro de `COUNT`, para contar el número de valores únicos en la columna `company.country`.
+- **AS total_countries:** La cláusula `AS` para dar un alias al resultado  `total_countries`. 
+
+**FROM transaction:**
+Para recuperar los datos de la tabla `transaction`.
+
+**JOIN company ON transaction.company_id = company.id:**
+- **JOIN:** Para combinar la tabla `company` con la tabla `transaction`.
+- **ON transaction.company_id = company.id:**  condición que indica para combinar las filas de ambas tablas donde el valor de `company_id` en la tabla `transaction` coincide con el valor de `id` en la tabla `company`.
+
+### Lo que hace la consulta:
+
+- **Unión de tablas:** La consulta une la tabla `transaction` con la tabla `company` utilizando el campo `company_id` en `transaction` y el campo `id` en `company`. Esto permite acceder a los datos de ambas tablas en una sola consulta.
+- **Conteo de países únicos:** Después de unir las tablas, la consulta cuenta el número de valores únicos en la columna `country` de la tabla `company` y le asigna el alias `total_countries`.
+
 
 ## Consulta 3: Identificar a la compañía con la mayor media de ventas
 
