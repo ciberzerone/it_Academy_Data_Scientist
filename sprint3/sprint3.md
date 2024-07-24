@@ -122,7 +122,7 @@ WHERE id = 'CcU-2938';
 <hr>
 
 
-# Ejercicio 2:  En la tabla `transaction` ingresar un nuevo usuario. 
+# Ejercicio 3:  En la tabla `transaction` ingresar un nuevo usuario. 
 
 ## Consulta 1: Ingresar los siguientes datos:
 

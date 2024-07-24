@@ -1,7 +1,7 @@
 ![IT Academy Logo](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/logoIT.png)
 
 
-[Ver base datos en SQL](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/sql/bbdd.sql)
+[Ver scripts SQL](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/sql/bbdd.sql)
 
 [Ver Sprint en PDF](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/pdf/sprint2.pdf)
 
@@ -113,13 +113,8 @@ WHERE company_id IN (
 ## Consulta 2: Lista las empresas que han realizado transacciones por un amount superior a la media de todas las transacciones.
 
 ```sql
-SELECT *
-FROM transaction
-WHERE company_id IN (
-    SELECT id
-    FROM company
-    WHERE country = 'Germany'
-);
+    USE transactions;
+    select * from company where id in ( select company_id from transaction where amount > (select avg(amount) from transaction));
 ```
 ### Imagen de consulta  empresas que han realizado transacciones por un amount superior a la media de todas las transacciones:
 ![Listado empresas que han realizado transacciones por un amount superior a la media de todas las transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_media.PNG)
