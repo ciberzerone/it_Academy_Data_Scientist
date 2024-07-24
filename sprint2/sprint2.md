@@ -67,6 +67,34 @@ JOIN company ON transaction.company_id = company.id;
 ### Imagen de  Listado de los países que están realizando compras:
 ![Listado de los países que están realizando compra](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_pais.PNG)
 
+
+### Explicacion:
+### Explicación del Código
+
+**SELECT:**
+Esta cláusula se utiliza para especificar qué columnas queremos recuperar de la base de datos.
+
+**DISTINCT:**
+La palabra clave DISTINCT se utiliza para eliminar filas duplicadas del resultado. En este caso, asegurará que solo se devuelvan países únicos, sin repeticiones.
+
+**company.country:**
+Aquí estamos especificando que queremos seleccionar la columna `country` de la tabla `company`.
+
+**FROM transaction:**
+Esta cláusula indica de qué tabla principal queremos recuperar los datos, en este caso, la tabla `transaction`.
+
+**JOIN company ON transaction.company_id = company.id:**
+- **JOIN:** La cláusula JOIN se utiliza para combinar filas de dos o más tablas basadas en una condición relacionada entre ellas.
+- **company:** Es la tabla que estamos uniendo con la tabla `transaction`.
+- **ON transaction.company_id = company.id:** Aquí estamos especificando la condición de unión. Esta condición indica que queremos combinar las filas de ambas tablas donde el valor de `company_id` en la tabla `transaction` coincide con el valor de `id` en la tabla `company`.
+
+### Lo que hace la consulta:
+
+- **Unión de tablas:** La consulta une la tabla `transaction` con la tabla `company` utilizando el campo `company_id` en `transaction` y el campo `id` en `company`. Esto permite acceder a los datos de ambas tablas en una sola consulta.
+- **Selección de países únicos:** Después de unir las tablas, la consulta selecciona los valores únicos de la columna `country` de la tabla `company`.
+
+
+
 ## Consulta 2: Desde cuántos países se realizan las compras
 
 ```sql
