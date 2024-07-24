@@ -133,7 +133,7 @@ WHERE id NOT IN (
 ```
 ### Imagen de consulta  empresas que carecen de transacciones registradas:
 ![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete03.PNG)
-### Para probarlo inserte un registro en la tabla company
+### Para probarlo inserte un registro en la tabla company  
 ```sql
 USE transactions;
 INSERT INTO company (id, company_name, phone, email, country, website) VALUES (        'b-2124', 'No tute', '06 77 15 31 14', 'amus@protonmail.couk', 'United Kingdom', 'https://gua.co.uk/settings');
