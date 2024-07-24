@@ -11,7 +11,7 @@
 
 El esquema creado incluye dos tablas principales: `company` y `transaction`. A continuación, se describen estas tablas y las variables que contienen, así como las relaciones entre ellas.
 
-## Tabla `company`
+## Tabla `company` 
 
 Esta tabla almacena información sobre las empresas involucradas en las transacciones. Contiene los siguientes campos:
 
