@@ -55,13 +55,10 @@
             WHERE country = 'Germany'
         );
     -- Consulta 2: Lista las empresas que han realizado transacciones por un amount superior a la media de todas las transacciones.
-        SELECT *
-        FROM transaction
-        WHERE company_id IN (
-            SELECT id
-            FROM company
-            WHERE country = 'Germany'
-        );
+        USE transactions;
+        select * from company 
+        where id in ( select company_id from transaction 
+        where amount > (select avg(amount) from transaction));
     -- Consulta 3: Transacciones registradas, entrega el listado de estas empresas
         SELECT *
         FROM company
