@@ -75,7 +75,7 @@ FROM transaction
 JOIN company ON transaction.company_id = company.id;
 ```
 
-### Imagen de  Listado de cuántos países se realizan las compras:
+### Imagen de  Listado de cuántos países se realizan las compras: 
 ![Listado de cuántos países se realizan las compras](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_nro_pais.PNG)
 
 ## Consulta 3: Identificar a la compañía con la mayor media de ventas
