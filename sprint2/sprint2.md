@@ -108,7 +108,7 @@ JOIN company ON transaction.company_id = company.id;
 ### Explicación del Código
 
 **SELECT COUNT(DISTINCT company.country) AS total_countries:**
-- **SELECT:** Para especificar qué columnas o expresiones queremos recuperar de la base de datos.
+- **SELECT:** Para especificar qué columnas o expresiones  recuperar de la base de datos.
 - **COUNT(DISTINCT company.country):** La función `COUNT` para contar el número de filas. `DISTINCT` dentro de `COUNT`, para contar el número de valores únicos en la columna `company.country`.
 - **AS total_countries:** La cláusula `AS` para dar un alias al resultado  `total_countries`. 
 
@@ -140,6 +140,16 @@ LIMIT 1;
 ![Listado de cuántos países se realizan las compras](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej02_consulta_company.PNG)
 
 
+### Explicación del codigo:
+
+- **Unión de tablas:** La consulta combina las filas de la tabla `transaction` con las filas de la tabla `company` donde `transaction.company_id` es igual a `company.id`. Esto permite acceder a los datos de ambas tablas en una sola consulta.
+- **Cálculo del promedio de ventas:** Después de unir las tablas, la consulta calcula el promedio de `amount` para cada compañía (`company_name`).
+- **Redondeo del promedio:** El promedio calculado se redondea a 2 decimales.
+- **Agrupación por compañía:** La consulta agrupa los resultados por el nombre de la compañía (`company_name`).
+- **Ordenación y selección del mejor resultado:** Los resultados se ordenan en orden descendente según el promedio de ventas (`avg_sales`), y se limita el resultado a la primera fila, que es la compañía con el promedio de ventas más alto.
+
+
+
 # Ejercicio 3: SubConsultas SQL  sin utilizar JOIN
 
 ## Consulta 1: Muestra todas las transacciones realizadas por empresas de Alemania.
@@ -156,6 +166,14 @@ WHERE company_id IN (
 ### Imagen de consulta todas las transacciones realizadas por empresas de Alemania.:
 ![Listado de cuántos países se realizan las compras](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_germany.PNG)
 
+### Explicación del codigo:
+
+- **Subconsulta: SELECT id  FROM company WHERE country = 'Germany'** 
+
+Seleccionar todos los id de la tabla `company` donde el country es `Germany` para obtener la lista de id de las compañías que están en Alemania.
+
+- **Consulta principal: SELECT * FROM transaction WHERE company_id IN** 
+Luego, la consulta principal selecciona todas las columnas (*) de la tabla transaction donde el company_id está en la lista de id obtenidos de la subconsulta.
 
 ## Consulta 2: Lista las empresas que han realizado transacciones por un amount superior a la media de todas las transacciones.
 
