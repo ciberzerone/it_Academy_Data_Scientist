@@ -13,7 +13,7 @@ El esquema creado incluye dos tablas principales: `company` y `transaction`. A c
 
 ## Tabla `company` 
 
-Esta tabla almacena información sobre las empresas involucradas en las transacciones. Contiene los siguientes campos:
+Esta tabla almacena información sobre las empresas involucradas en las transacciones. Contiene los siguientes campos: 
 
 - **id**: Identificador único de la empresa (VARCHAR(15)).
 - **company_name**: Nombre de la empresa (VARCHAR(255)).
