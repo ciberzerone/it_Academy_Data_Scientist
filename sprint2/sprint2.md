@@ -185,6 +185,21 @@ Luego, la consulta principal selecciona todas las columnas (*) de la tabla trans
 ![Listado empresas que han realizado transacciones por un amount superior a la media de todas las transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_media.PNG)
 
 
+### Explicación del codigo:
+
+- **Seleccionar la base de datos:   USE transactions**
+La consulta empieza seleccionando la base de datos `transactions`.
+
+
+- **Subconsulta anidada SELECT AVG(amount) FROM transaction:**
+La subconsulta más interna SELECT AVG(amount) FROM transaction calcula el promedio del campo `amount` en la tabla `transaction`.
+
+- **Subconsulta principal SELECT company_id FROM transaction WHERE amount > ( ... )**
+Selecciona los company_id de la tabla transaction donde el `amount` es mayor que el promedio calculado por la subconsulta anidada.
+
+- **Consulta principal SELECT * FROM company WHERE id IN (...)**
+Selecciona todas las columnas de la tabla `company` donde el id está en la lista de `company_id` obtenidos de la subconsulta principal.
+
 
 ## Consulta 3: Eliminar del sistema las empresas que carecen de transacciones registradas, entrega el listado de estas empresas..
 
@@ -198,6 +213,12 @@ WHERE id NOT IN (
 ```
 ### Imagen de consulta  empresas que carecen de transacciones registradas:
 ![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete03.PNG)
+
+### Explicación del codigo:
+
+- **SELECT * FROM company:** Selecciona todas las columnas de la tabla `company`
+- **WHERE id NOT IN (SELECT DISTINCT company_id FROM transaction):** Filtra las filas donde el id de la empresa no está en la lista de `company_id` de la tabla `transaction`.
+
 ### Para probarlo inserte un registro en la tabla company  
 ```sql
 USE transactions;
@@ -206,8 +227,13 @@ INSERT INTO company (id, company_name, phone, email, country, website) VALUES ( 
 ### Imagen de sql inserte un registro en la tabla company:
 ![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete02.PNG)
 
+### Explicación del codigo:
 
-### Imagen de consulta  empresas que carecen de transacciones registradas:
+- **SELECT * FROM company:INSERT INTO company (... ) VALUES ( ..);**
+Insertar un nuevo registro en la tabla 'company' para poder probar la consulta de eliminación.
+
+
+### Consulta  empresas que carecen de transacciones registradas:
 ```sql
 SELECT *
 FROM company
@@ -230,7 +256,13 @@ WHERE id NOT IN (
 ```
 ### Imagen de aplicacion de sql con el registro insertado:
 ![Listado empresas que carecen de transacciones registradas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/ej03_consulta_delete04.PNG)
-<hr>
 
+
+### Explicación del codigo:
+
+- **DELETE FROM company WHERE id NOT IN (SELECT DISTINCT company_id FROM transaction);**
+ Eliminación empresas que no tienen transacciones registradas.
+
+ <hr>
 
 
