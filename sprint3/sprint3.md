@@ -161,3 +161,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 ### Imagen de Mostrar ID CcU-2938:
 ![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje03_insertar02.PNG)
 
+### Explicar codigo:
+- **SET FOREIGN_KEY_CHECKS = 0;:** Para evitar el Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`transactions`.`transaction`, CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`))*/ se debe usar SET FOREIGN_KEY_CHECKS = 0; que evita evitar errores de restricciones de claves foráneas durante las inserciones.
+
