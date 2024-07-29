@@ -159,5 +159,5 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 
 ### Imagen de Mostrar ID CcU-2938:
-![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje02_insertar02.PNG)
+![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje03_insertar02.PNG)
 
