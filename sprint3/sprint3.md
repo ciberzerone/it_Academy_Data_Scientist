@@ -1,9 +1,9 @@
 ![IT Academy Logo](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/logoIT.png)
 
 
-[Ver script de SQL](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/sql/bbdd.sql)
+[Ver script de SQL](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/sql/bbdd.sql)
 
-[Ver Sprint 3 en PDF](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/pdf/sprint2.pdf)
+[Ver Sprint 3 en PDF](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/pdf/sprint3.pdf)
 
 ![Nivel 1](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/nivel1.PNG)
 
