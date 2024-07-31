@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS credit_card (
     expiring_date DATE
 );
 
+
 CREATE TABLE IF NOT EXISTS user (
         id INT PRIMARY KEY,
         name VARCHAR(100),
