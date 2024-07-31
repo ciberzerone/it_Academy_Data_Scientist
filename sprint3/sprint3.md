@@ -124,13 +124,13 @@ WHERE id = 'CcU-2938';
 
 # Ejercicio 3:  En la tabla `transaction` ingresar un nuevo usuario. 
 
-## Consulta 1: Ingresar los siguientes datos:
+## Ingresar los siguientes datos:
 
 ### Imagen de  Datos a ingresar:
 ![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje03_insertar01.PNG)
 
 
-### Sql es Mostrar ID CcU-2938
+### Sql de Insert de los datos en la tabla 'transaction' pero a la vez debe ingresaarse datos en  tablas:  'company' 'user' 'credit_card'.
 
 ```sql
 -- Deshabilitar las comprobaciones de claves foráneas temporalmente
