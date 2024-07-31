@@ -130,11 +130,10 @@ WHERE id = 'CcU-2938';
 ![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje03_insertar01.PNG)
 
 
-### Sql de Insert de los datos en la tabla 'transaction' pero a la vez debe ingresaarse datos en  tablas:  'company' 'user' 'credit_card'.
+### Sql de Insert de los datos en la tabla 'transaction' pero a la vez debe ingresarse datos en  tablas:  'company' 'user' 'credit_card'.
 
 ```sql
--- Deshabilitar las comprobaciones de claves foráneas temporalmente
-SET FOREIGN_KEY_CHECKS = 0;
+-- Considerando que tambien tenemos los datos de las 'company' 'user' 'credit_card' procedemos a ingresar los datos
 
 -- Insertar un nuevo registro en la tabla 'company'
 INSERT INTO company (id, company_name, phone, email, country, website) 
@@ -152,9 +151,6 @@ VALUES ('CcU-9999', 'TR301950312213576817638661', '5424465566813633', '3257', '9
 INSERT INTO transaction (id, credit_card_id, company_id, user_id, lat, longitude, timestamp, amount, declined) 
 VALUES ('108B1D1D-5B23-A76C-55EF-C568E49A99DD', 'CcU-9999', 'b-9999', 9999, 829.999, -117.999, NOW(), 111.11, 0);
 
--- Habilitar las comprobaciones de claves foráneas
-SET FOREIGN_KEY_CHECKS = 1;
-
 ```
 
 
@@ -162,7 +158,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 ![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje03_insertar02.PNG)
 
 ### Explicar codigo:
-- **SET FOREIGN_KEY_CHECKS = 0;:** Para evitar el Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`transactions`.`transaction`, CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`))*/ se debe usar SET FOREIGN_KEY_CHECKS = 0; que evita evitar errores de restricciones de claves foráneas durante las inserciones.
+- **INSERT INTO** en las tablas 'transaction', 'company', 'user', 'credit_card'  para evitar Código de error: 1452 que ocurre por solo ingresar los datos en solo en  la tabla 'transaction'.
 
 
 
