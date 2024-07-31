@@ -164,3 +164,35 @@ SET FOREIGN_KEY_CHECKS = 1;
 ### Explicar codigo:
 - **SET FOREIGN_KEY_CHECKS = 0;:** Para evitar el Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`transactions`.`transaction`, CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`))*/ se debe usar SET FOREIGN_KEY_CHECKS = 0; que evita evitar errores de restricciones de claves foráneas durante las inserciones.
 
+
+
+# Ejercicio 4: Desde recursos humanos te solicitan eliminar la columna `pan` de la tabla `credit_card`. Recuerda mostrar el cambio realizado. 
+
+## Eliminar la columna `pan` de la tabla `credit_card`:
+
+
+### Sql para eliminar 
+```sql
+ALTER TABLE credit_card
+DROP COLUMN pan;
+```
+### Imagen de  Datos a ingresar:
+![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje03_insertar01.PNG)
+
+### Explicar codigo:
+Para modificar la tabla 'credit_card' se utilizar 'alter' y para eliminar la columna 'pan' se utiliza drop 
+
+
+## Mostrar el cambio realizado:
+
+### Sql para mostrar los cambios en la tabla  credit_card
+```sql
+
+DESCRIBE credit_card;
+
+```
+### Imagen de  Datos a ingresar:
+![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje03_insertar01.PNG)
+
+### Explicar codigo:
+-- para mostrar  describe credit_card nos muestra la estructura 
