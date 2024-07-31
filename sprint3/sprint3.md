@@ -176,8 +176,8 @@ SET FOREIGN_KEY_CHECKS = 1;
 ALTER TABLE credit_card
 DROP COLUMN pan;
 ```
-### Imagen de  Datos a ingresar:
-![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje03_insertar01.PNG)
+### Imagen Elimar columna pan:
+![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje04_eliminar01.PNG)
 
 ### Explicar codigo:
 Para modificar la tabla 'credit_card' se utilizar 'alter' y para eliminar la columna 'pan' se utiliza drop 
@@ -191,8 +191,8 @@ Para modificar la tabla 'credit_card' se utilizar 'alter' y para eliminar la col
 DESCRIBE credit_card;
 
 ```
-### Imagen de  Datos a ingresar:
-![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje03_insertar01.PNG)
+### Imagen de  mostrando los cambios realizados en la tabla credit_card:
+![Mostrar ID CcU-2938](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/imagen/eje04_eliminar02.PNG)
 
 ### Explicar codigo:
 -- para mostrar  describe credit_card nos muestra la estructura 
