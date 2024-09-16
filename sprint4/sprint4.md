@@ -18,7 +18,7 @@ CREATE DATABASE proyecto_db;
 USE proyecto_db;
 
 ```
-
+![Sql Creacion Base de datos](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje01.PNG)
 
 
 # Ejercicio 1:
