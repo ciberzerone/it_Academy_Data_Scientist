@@ -3,11 +3,23 @@
 
 [Ver script de SQL](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/sql/script.sql)
 
-[Ver Sprint 3 en PDF](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/pdf/sprint3.pdf)
+[Ver Sprint 4 en PDF](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/pdf/sprint4.pdf)
 
 ![Nivel 1](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/nivel1.PNG)
 
 Diseña una base de datos con un esquema de estrella que contenga, al menos 4 tablas de las que puedas realizar las siguientes consultas:
+
+## Sql de Base de Datos  `proyecto_db`
+
+```sql
+-- Creacion base de datos proyecto_db
+
+CREATE DATABASE proyecto_db;
+USE proyecto_db;
+
+```
+
+
 
 # Ejercicio 1:
 
