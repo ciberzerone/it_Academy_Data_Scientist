@@ -60,6 +60,9 @@ CREATE TABLE usuarios (
 
 ```
 
+![Sql Creacion tabla usuarios](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje03.PNG)
+
+
 ## Sql de Tabla `productos`
 
 ```sql
