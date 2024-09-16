@@ -20,10 +20,93 @@ USE proyecto_db;
 ```
 ![Sql Creacion Base de datos](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje01.PNG)
 
+## Creacion de Tablas: Transacciones, usuarios, producto y tarjeta de credito.
+Tabla Fact (hechos): transacciones (la tabla principal que contiene las ventas/operaciones).
+Tablas Dimensión: usuarios, productos, y tarjetas_credito.
+
+## Sql de Tabla `Transacciones`
+
+```sql
+-- Creacion de la tabla transacciones
+
+CREATE TABLE transacciones (
+    transaction_id INT PRIMARY KEY,
+    user_id INT,
+    product_id INT,
+    card_id INT,
+    amount DECIMAL(10, 2),
+    status VARCHAR(50),
+    date DATE,
+    FOREIGN KEY (user_id) REFERENCES usuarios(user_id),
+    FOREIGN KEY (product_id) REFERENCES productos(product_id),
+    FOREIGN KEY (card_id) REFERENCES tarjetas_credito(card_id)
+);
+
+```
+
+![Sql Creacion tabla transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje02.PNG)
+
+## Sql de Tabla `usuarios`
+
+```sql
+-- Creacion de la tabla usuarios
+
+CREATE TABLE usuarios (
+    user_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    country VARCHAR(50),
+    email VARCHAR(100)
+);
+
+```
+
+## Sql de Tabla `productos`
+
+```sql
+-- Creacion de la tabla productos
+
+CREATE TABLE productos (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(100),
+    category VARCHAR(50),
+    price DECIMAL(10, 2)
+);
+
+```
+
+## Sql de Tabla `tarjetas_credito`
+
+```sql
+-- Creacion de la tabla tarjetas_credito
+
+CREATE TABLE tarjetas_credito (
+    card_id INT PRIMARY KEY,
+    card_number VARCHAR(16),
+    iban VARCHAR(24),
+    company_name VARCHAR(100)
+);
+
+```
+
+
+
+
+
+## Esquema de estrella de la base de datos
+
+
+
+
+![Sql Creacion Base de datos](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje01.PNG)
+
+
+
+
+
 
 # Ejercicio 1:
 
-El esquema creado incluye dos tablas principales: `company` y `transaction`. A continuación, se describen estas tablas y las variables que contienen, así como las relaciones entre ellas.
+Realiza una subconsulta que muestre a todos los usuarios con más de 30 transacciones utilizando al menos 2 tablas.
 
 ## Diseño de la Tabla  `credit_card`
 
@@ -94,7 +177,8 @@ A continuación se presenta un diagrama que ilustra la relación entre las tabla
 <hr>
 
 
-# Ejercicio 2:  Actualizar número de cuenta del usuario con ID CcU-2938. 
+# Ejercicio 2:  
+Muestra la media de amount por IBAN de las tarjetas de crédito en la compañía Donec Ltd., utiliza por lo menos 2 tablas.
 
 ## Consulta 1: La información que debe mostrarse para este registro es: R323456312213576817699999.
 
