@@ -76,6 +76,8 @@ CREATE TABLE productos (
 );
 
 ```
+![Sql Creacion tabla productos](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje04.PNG)
+
 
 ## Sql de Tabla `tarjetas_credito`
 
@@ -91,6 +93,7 @@ CREATE TABLE tarjetas_credito (
 
 ```
 
+![Sql Creacion tabla tarjetas_credito](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje05.PNG)
 
 
 
