@@ -48,50 +48,64 @@ CREATE TABLE transactions (
 
 ![Sql Creacion tabla transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje02.PNG)
 
-## Sql de Tabla `usuarios`
+## Sql de Tabla `companies`
 
 ```sql
--- Creacion de la tabla usuarios
+-- Creacion de la tabla companies
 
-CREATE TABLE usuarios (
-    user_id INT PRIMARY KEY,
-    name VARCHAR(100),
+CREATE TABLE companies (
+    company_id VARCHAR(10) PRIMARY KEY,
+    company_name VARCHAR(100),
+    phone VARCHAR(20),
+    email VARCHAR(100),
     country VARCHAR(50),
-    email VARCHAR(100)
+    website VARCHAR(200)
 );
 
 ```
 
-![Sql Creacion tabla usuarios](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje03.PNG)
+![Sql Creacion tabla companies](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje03.PNG)
 
 
-## Sql de Tabla `productos`
+## Sql de Tabla `credit_card_data`
 
 ```sql
--- Creacion de la tabla productos
+-- Creacion de la tabla credit_card_data
 
-CREATE TABLE productos (
-    product_id INT PRIMARY KEY,
-    product_name VARCHAR(100),
-    category VARCHAR(50),
-    price DECIMAL(10, 2)
+CREATE TABLE credit_card_data (
+    id VARCHAR(10) PRIMARY KEY,
+    user_id INT,
+    iban VARCHAR(34),
+    pan VARCHAR(19),
+    pin VARCHAR(10),
+    cvv VARCHAR(4),
+    track1_data VARCHAR(128),
+    track2_data VARCHAR(128),
+    expiring_date DATE
 );
+
 
 ```
 ![Sql Creacion tabla productos](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje04.PNG)
 
-
+REATE TABLE transacciones (
+    id CHAR(36) PRIMARY KEY,       
+    card_id VARCHAR(255),           
+    business_id VARCHAR(255),       
+    timestamp DATETIME,            
+    amount DECIMAL(10, 2),         
+    declined BOOLEAN,              
+    product_ids VARCHAR(255),      
+    user_id INT,                   
+    lat DECIMAL(10, 8),            
+    longitude DECIMAL(11, 8)       
+);
 ## Sql de Tabla `tarjetas_credito`
 
 ```sql
 -- Creacion de la tabla tarjetas_credito
 
-CREATE TABLE tarjetas_credito (
-    card_id INT PRIMARY KEY,
-    card_number VARCHAR(16),
-    iban VARCHAR(24),
-    company_name VARCHAR(100)
-);
+C
 
 ```
 
