@@ -113,10 +113,15 @@ ADD  FOREIGN KEY (card_id) REFERENCES tarjetas_credito(card_id)
 ```
 
 
-![Sql Creacion Base de datos](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje06.PNG)
+![Sql Alteracion de las tablas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje06.PNG)
 
 
 
+## ER de la base de datos
+
+
+
+![Sql Alteracion de las tablas](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje07.PNG)
 
 
 
