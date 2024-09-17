@@ -98,12 +98,22 @@ CREATE TABLE tarjetas_credito (
 
 
 
-## Esquema de estrella de la base de datos
+## Esquema estrella de la base de datos
 
 
+```sql
+-- Alterar a las tablas agregando las relaciones 
+
+# darle esquema de estrella 
+ALTER TABLE transacciones 
+ADD  FOREIGN KEY (user_id) REFERENCES usuarios(user_id),
+ADD  FOREIGN KEY (product_id) REFERENCES productos(product_id),
+ADD  FOREIGN KEY (card_id) REFERENCES tarjetas_credito(card_id)
+
+```
 
 
-![Sql Creacion Base de datos](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje01.PNG)
+![Sql Creacion Base de datos](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje06.PNG)
 
 
 
