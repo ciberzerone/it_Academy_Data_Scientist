@@ -29,18 +29,20 @@ Tablas Dimensión: usuarios, productos, y tarjetas_credito.
 ```sql
 -- Creacion de la tabla transacciones
 
-CREATE TABLE transacciones (
-    transaction_id INT PRIMARY KEY,
-    user_id INT,
-    product_id INT,
-    card_id INT,
+CREATE TABLE transactions (
+    id    int NOT NULL,
+    card_id VARCHAR(50),
+    business_id VARCHAR(50),
+    timestamp TIMESTAMP,
     amount DECIMAL(10, 2),
-    status VARCHAR(50),
-    date DATE,
-    FOREIGN KEY (user_id) REFERENCES usuarios(user_id),
-    FOREIGN KEY (product_id) REFERENCES productos(product_id),
-    FOREIGN KEY (card_id) REFERENCES tarjetas_credito(card_id)
+    declined BOOLEAN,
+    product_ids TEXT, 
+    user_id INT,
+    lat DECIMAL(15, 10),
+    longitude DECIMAL(15, 10),
+    PRIMARY KEY (id)
 );
+
 
 ```
 
