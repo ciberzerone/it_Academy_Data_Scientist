@@ -136,10 +136,6 @@ ALTER TABLE transactions
 ADD CONSTRAINT fk_business
 FOREIGN KEY (business_id) REFERENCES companies(company_id);
 
--- Agregar clave foránea para `user_id` en la tabla `credit_card_data`
-ALTER TABLE credit_card_data
-ADD CONSTRAINT fk_user_card
-FOREIGN KEY (user_id) REFERENCES users(id);
 
 ```
 
