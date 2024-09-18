@@ -30,7 +30,7 @@ Tablas Dimensión: usuarios, productos, y tarjetas_credito.
 -- Creacion de la tabla transacciones
 
 CREATE TABLE transactions (
-    id    int NOT NULL,
+    id    VARCHAR(36) NOT NULL  PRIMARY KEY,
     card_id VARCHAR(50),
     business_id VARCHAR(50),
     timestamp TIMESTAMP,
@@ -39,9 +39,8 @@ CREATE TABLE transactions (
     product_ids TEXT, 
     user_id INT,
     lat DECIMAL(15, 10),
-    longitude DECIMAL(15, 10),
-    PRIMARY KEY (id)
-);
+    longitude DECIMAL(15, 10)
+    );
 
 
 ```
@@ -154,40 +153,124 @@ FOREIGN KEY (business_id) REFERENCES companies(company_id);
 
 # Ejercicio 1:
 
-Realiza una subconsulta que muestre a todos los usuarios con más de 30 transacciones utilizando al menos 2 tablas.
-
-## Diseño de la Tabla  `credit_card`
-
-Esta tabla almacena información sobre las tarjetas de creditos involucradas en las transacciones. Contiene los siguientes campos:
-
-### Columnas:
-
-- **id**: Identificador único de la tarjeta de crédito.
-- **iban**: Número IBAN de la tarjeta.
-- **pan**: Número PAN de la tarjeta.
-- **pin**: PIN de la tarjeta.
-- **cvv**: Código CVV de la tarjeta.
-- **expiring_date**: Fecha de vencimiento de la tarjeta.
-
-### Claves y Relaciones:
-
-- **id**: Clave primaria.
+## Realiza una subconsulta que muestre a todos los usuarios con más de 30 transacciones utilizando al menos 2 tablas.
 
 
-## Sql de tabla  `credit_card`
+## Sql de tabla Usuarios con más de 30 transacciones
 
 ```sql
--- Creacion la tabla credit_card
-CREATE TABLE IF NOT EXISTS credit_card (
-    id VARCHAR(15) PRIMARY KEY,
-    iban VARCHAR(34),
-    pan VARCHAR(19),
-    pin VARCHAR(4),
-    cvv VARCHAR(4),
-    expiring_date DATE
-);
-
+-- Usuarios con más de 30 transacciones
+SELECT u.id, u.name, u.surname, COUNT(t.id) AS transaction_count
+FROM users u
+JOIN transactions t ON u.id = t.user_id
+GROUP BY u.id, u.name, u.surname
+HAVING COUNT(t.id) > 30
+LIMIT 0, 5000;
 ```
+
+### Explicacion:
+
+# Explicación del Pseudocódigo
+
+El objetivo de la consulta es obtener una lista de usuarios que han realizado más de 30 transacciones. Para ello, se cuenta la cantidad de transacciones de cada usuario, y solo aquellos usuarios que cumplen con este criterio son incluidos en los resultados. Además, se limita el resultado a un máximo de 5000 registros.
+
+## Pseudocódigo detallado:
+
+1. **Seleccionar columnas relevantes**  
+   - Seleccionamos los datos de los usuarios (`id`, `name`, `surname`).
+   - Contamos cuántas transacciones tiene cada usuario.
+
+2. **Especificar la fuente de datos primaria**  
+   - Usamos la tabla de usuarios (`users`) como fuente principal de la consulta.
+
+3. **Relacionar los datos entre las tablas**  
+   - Unimos la tabla `transactions` con la tabla `users` para relacionar las transacciones con los usuarios.
+   - La relación entre las dos tablas se realiza a través del campo `user_id` en la tabla `transactions`, que debe coincidir con el `id` del usuario en la tabla `users`.
+
+4. **Agrupar los resultados**  
+   - Agrupamos los resultados por usuario, usando `id`, `name` y `surname`.
+   - Esto es necesario para contar cuántas transacciones tiene cada usuario y asegurar que los resultados no se dupliquen.
+
+5. **Filtrar los usuarios que cumplen con una condición**  
+   - Usamos la función `HAVING` para filtrar a los usuarios que tienen más de 30 transacciones, contando las filas de la tabla `transactions` por usuario.
+
+6. **Limitar los resultados**  
+   - Finalmente, limitamos la cantidad de resultados a un máximo de 5000 usuarios para optimizar la consulta y evitar sobrecargar el sistema.
+
+## Pseudocódigo paso a paso:
+
+1. **Inicio de la consulta**  
+   - Definir las columnas a seleccionar:
+     - `u.id`: el identificador único del usuario.
+     - `u.name`: el nombre del usuario.
+     - `u.surname`: el apellido del usuario.
+     - `COUNT(t.id)`: el conteo de transacciones realizadas por ese usuario, usando el campo `id` de la tabla `transactions`.
+
+    ```sql
+    SELECT u.id, u.name, u.surname, COUNT(t.id) AS transaction_count
+    ```
+
+2. **Especificar la tabla base (tabla `users`)**  
+   - Utilizamos la tabla `users` como la tabla principal, a la que se le hará uniones para obtener más datos relacionados.
+
+    ```sql
+    FROM users u
+    ```
+
+3. **Realizar la unión (JOIN) con la tabla `transactions`**  
+   - Unimos la tabla `transactions` con la tabla `users` mediante una relación en la cual el `user_id` en la tabla `transactions` es igual al `id` del usuario en la tabla `users`.
+
+    ```sql
+    JOIN transactions t ON u.id = t.user_id
+    ```
+
+4. **Agrupar los datos por usuario (GROUP BY)**  
+   - Agrupamos los resultados para que cada fila en el resultado corresponda a un usuario único. Esto nos permitirá contar las transacciones de cada usuario.
+
+    ```sql
+    GROUP BY u.id, u.name, u.surname
+    ```
+
+5. **Filtrar usuarios con más de 30 transacciones (HAVING)**  
+   - Usamos la cláusula `HAVING` para filtrar a aquellos usuarios cuyo número de transacciones (contadas en el paso anterior) sea mayor a 30.
+
+    ```sql
+    HAVING COUNT(t.id) > 30
+    ```
+
+6. **Limitar el número de resultados (LIMIT)**  
+   - Limitamos el número de resultados a 5000, comenzando desde el primer resultado. Esto mejora el rendimiento y evita sobrecargar el sistema si hay muchos usuarios.
+
+    ```sql
+    LIMIT 0, 5000;
+    ```
+
+## Explicación de cada paso:
+
+1. **Seleccionar las columnas**:
+   - Se seleccionan las columnas `id`, `name` y `surname` de los usuarios.
+   - Se cuenta cuántas transacciones (`t.id`) tiene cada usuario usando `COUNT(t.id)` y se le da el alias `transaction_count`.
+
+2. **Tabla principal (`FROM users`)**:
+   - La tabla `users` es la fuente principal de datos para la consulta.
+
+3. **Unión (JOIN)**:
+   - Se realiza un `JOIN` para unir la tabla `users` con `transactions`, relacionando el `user_id` en `transactions` con el `id` de la tabla `users`.
+
+4. **Agrupación (`GROUP BY`)**:
+   - Se agrupan los resultados por los campos `id`, `name` y `surname` del usuario. Esto garantiza que cada usuario tenga una única fila en el resultado.
+
+5. **Filtro (`HAVING`)**:
+   - Se usa la cláusula `HAVING` para filtrar aquellos usuarios cuyo conteo de transacciones sea mayor a 30.
+
+6. **Limitación de resultados (`LIMIT`)**:
+   - Finalmente, se usa `LIMIT` para restringir el número de usuarios devueltos a un máximo de 5000 filas, optimizando el rendimiento.
+
+
+![Sql  usuarios con más de 30 transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje08.PNG)
+
+
+
 ## Introducir la data en la  `credit_card`
 Al insertar los datos, arroja un error por el formato de los datos expiring_date, una solucion podria ser utilizar varchar, pero se utizo STR_TO_DATE(cadena, formato) que convierte los datos de una cadena a un formato de fecha
 
