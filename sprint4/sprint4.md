@@ -88,28 +88,28 @@ CREATE TABLE credit_card_data (
 ```
 ![Sql Creacion tabla productos](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje04.PNG)
 
-REATE TABLE transacciones (
-    id CHAR(36) PRIMARY KEY,       
-    card_id VARCHAR(255),           
-    business_id VARCHAR(255),       
-    timestamp DATETIME,            
-    amount DECIMAL(10, 2),         
-    declined BOOLEAN,              
-    product_ids VARCHAR(255),      
-    user_id INT,                   
-    lat DECIMAL(10, 8),            
-    longitude DECIMAL(11, 8)       
-);
-## Sql de Tabla `tarjetas_credito`
+
+## Sql de Tabla `users`
 
 ```sql
 -- Creacion de la tabla tarjetas_credito
 
-C
+CREATE TABLE users (
+    id INT PRIMARY KEY,            
+    name VARCHAR(100),             
+    surname VARCHAR(100),          
+    phone VARCHAR(50),             
+    email VARCHAR(150),            
+    birth_date DATE,               
+    country VARCHAR(100),          
+    city VARCHAR(100),             
+    postal_code VARCHAR(20),       
+    address VARCHAR(255)           
+);
 
 ```
 
-![Sql Creacion tabla tarjetas_credito](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje05.PNG)
+![Sql Creacion tabla Users](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje05.PNG)
 
 
 
@@ -121,10 +121,25 @@ C
 -- Alterar a las tablas agregando las relaciones 
 
 # darle esquema de estrella 
-ALTER TABLE transacciones 
-ADD  FOREIGN KEY (user_id) REFERENCES usuarios(user_id),
-ADD  FOREIGN KEY (product_id) REFERENCES productos(product_id),
-ADD  FOREIGN KEY (card_id) REFERENCES tarjetas_credito(card_id)
+-- Agregar clave foránea para `user_id` que referencia a la tabla `users`
+ALTER TABLE transactions
+ADD CONSTRAINT fk_user
+FOREIGN KEY (user_id) REFERENCES users(id);
+
+-- Agregar clave foránea para `card_id` que referencia a la tabla `credit_card_data`
+ALTER TABLE transactions
+ADD CONSTRAINT fk_card
+FOREIGN KEY (card_id) REFERENCES credit_card_data(id);
+
+-- Agregar clave foránea para `business_id` que referencia a la tabla `companies`
+ALTER TABLE transactions
+ADD CONSTRAINT fk_business
+FOREIGN KEY (business_id) REFERENCES companies(company_id);
+
+-- Agregar clave foránea para `user_id` en la tabla `credit_card_data`
+ALTER TABLE credit_card_data
+ADD CONSTRAINT fk_user_card
+FOREIGN KEY (user_id) REFERENCES users(id);
 
 ```
 
