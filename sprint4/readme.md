@@ -46,7 +46,7 @@ CREATE TABLE transactions (
 
 ```
 
-![Sql Creacion tabla transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/02.PNG)
+![Sql Creacion tabla transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje02.PNG)
 
 ## Sql de Tabla `companies`
 
