@@ -205,9 +205,7 @@ IGNORE 1 LINES                                                                  
 (id, card_id, business_id, timestamp, amount, declined, product_ids, user_id, lat, longitude);  -----Mapea las columnas del archivo CSV a las columnas correspondientes de la tabla
 ```
 
-
-
-![Reiniciar Mysql](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/insertTransactions.PNG)
+![Importacion de datos a la tabla Transactions](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/insertTransactions.PNG)
 
 
 
