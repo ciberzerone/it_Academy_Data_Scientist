@@ -11,10 +11,10 @@
 
 Diseña una base de datos con un esquema de estrella que contenga, al menos 4 tablas de las que puedas realizar las siguientes consultas:
 
-## Sql de Base de Datos  `proyecto_db`
+## Sql de Base de Datos  `sprint4`
 
 ```sql
--- Creacion base de datos proyecto_db
+-- Creacion base de datos sprint4
 
 CREATE DATABASE IF NOT EXISTS sprint4;
 use sprint4;
@@ -26,22 +26,22 @@ use sprint4;
 Tabla Fact (hechos): transacciones (la tabla principal que contiene las ventas/operaciones).
 Tablas Dimensión: usuarios, productos, y tarjetas_credito.
 
-## Sql de Tabla `Transacciones`
+## Sql de Tabla `Transactions`
 
 ```sql
--- Creacion de la tabla transacciones
+-- Creacion de la tabla Transactions
 
 CREATE TABLE transactions (
-    id VARCHAR(50) NOT NULL PRIMARY KEY,  -- Basado en IDs alfanuméricos grandes
-    card_id VARCHAR(50),                  -- Similar a los IDs
-    business_id VARCHAR(50),              -- Similar a los IDs
-    timestamp TIMESTAMP,                  -- Fecha y hora de la transacción
-    amount DECIMAL(10, 2),                -- Valores monetarios con 2 decimales
-    declined BOOLEAN,                     -- True (T) o False (F)
-    product_ids TEXT,                     -- Lista de product_ids en texto
-    user_id INT,                          -- Identificador del usuario
-    lat DECIMAL(15, 10),                  -- Latitud con precisión suficiente
-    longitude DECIMAL(15, 10)             -- Longitud con precisión suficiente
+    id VARCHAR(50) NOT NULL PRIMARY KEY,  -- Identificador único
+    card_id VARCHAR(50) NULL,             -- Puede ser NULL si no hay tarjeta asociada
+    business_id VARCHAR(50) NULL,         -- Puede ser NULL si no hay negocio asociado
+    timestamp TIMESTAMP NOT NULL,         -- Marca de tiempo obligatoria
+    amount DECIMAL(10, 2) NOT NULL,       -- El monto de la transacción no debe ser NULL
+    declined BOOLEAN NOT NULL,            -- Indica si la transacción fue rechazada
+    product_ids TEXT NULL,                -- Puede ser NULL si no hay productos asociados
+    user_id INT NULL,                     -- Puede ser NULL si el usuario no está identificado
+    lat DECIMAL(15, 10) NULL,             -- Puede ser NULL si la ubicación no está disponible
+    longitude DECIMAL(15, 10) NULL        -- Puede ser NULL si la ubicación no está disponible
 );
 
 ```
@@ -54,12 +54,12 @@ CREATE TABLE transactions (
 -- Creacion de la tabla companies
 
 CREATE TABLE companies (
-    company_id VARCHAR(10) PRIMARY KEY,
-    company_name VARCHAR(100),
-    phone VARCHAR(20),
-    email VARCHAR(100),
-    country VARCHAR(50),
-    website VARCHAR(200)
+    company_id VARCHAR(6) NOT NULL PRIMARY KEY,  -- Identificador único de la compañía
+    company_name VARCHAR(100) NOT NULL,          -- Nombre de la compañía es obligatorio
+    phone VARCHAR(20) NULL,                      -- Puede ser NULL si no hay teléfono disponible
+    email VARCHAR(100) NULL,                     -- Puede ser NULL si no hay email disponible
+    country VARCHAR(50) NULL,                    -- Puede ser NULL si no hay país disponible
+    website VARCHAR(255) NULL                    -- Puede ser NULL si no hay sitio web disponible
 );
 
 ```
@@ -73,15 +73,15 @@ CREATE TABLE companies (
 -- Creacion de la tabla credit_card_data
 
 CREATE TABLE credit_card_data (
-    id VARCHAR(10) PRIMARY KEY,
-    user_id INT,
-    iban VARCHAR(34),
-    pan VARCHAR(19),
-    pin VARCHAR(10),
-    cvv VARCHAR(4),
-    track1_data VARCHAR(128),
-    track2_data VARCHAR(128),
-    expiring_date DATE
+    id VARCHAR(8) NOT NULL PRIMARY KEY,         -- Identificador único
+    user_id INT NOT NULL,                       -- Relación con la tabla de usuarios, siempre presente
+    iban VARCHAR(34) NULL,                      -- Puede ser NULL si no hay IBAN disponible
+    pan VARCHAR(19) NULL,                       -- Puede ser NULL si no hay PAN disponible
+    pin VARCHAR(6) NULL,                        -- Puede ser NULL si no hay PIN disponible
+    cvv VARCHAR(4) NULL,                        -- Puede ser NULL si no hay CVV disponible
+    track1_data VARCHAR(128) NULL,              -- Puede ser NULL si no hay track1 disponible
+    track2_data VARCHAR(128) NULL,              -- Puede ser NULL si no hay track2 disponible
+    expiring_date DATE NULL                     -- Puede ser NULL si no hay fecha de expiración disponible
 );
 
 
@@ -92,24 +92,61 @@ CREATE TABLE credit_card_data (
 ## Sql de Tabla `users`
 
 ```sql
--- Creacion de la tabla tarjetas_credito
+-- Creacion de la tabla users
 
 CREATE TABLE users (
-    id INT PRIMARY KEY,            
-    name VARCHAR(100),             
-    surname VARCHAR(100),          
-    phone VARCHAR(50),             
-    email VARCHAR(150),            
-    birth_date DATE,               
-    country VARCHAR(100),          
-    city VARCHAR(100),             
-    postal_code VARCHAR(20),       
-    address VARCHAR(255)           
+    id INT NOT NULL PRIMARY KEY,              -- Identificador único
+    name VARCHAR(100) NOT NULL,               -- El nombre del usuario no puede ser NULL
+    surname VARCHAR(100) NOT NULL,            -- El apellido del usuario no puede ser NULL
+    phone VARCHAR(50) NULL,                   -- Puede ser NULL si no hay teléfono disponible
+    email VARCHAR(150) NULL,                  -- Puede ser NULL si no hay email disponible
+    birth_date DATE NULL,                     -- Puede ser NULL si no hay fecha de nacimiento disponible
+    country VARCHAR(50) NULL,                 -- Puede ser NULL si no hay país disponible
+    city VARCHAR(100) NULL,                   -- Puede ser NULL si no hay ciudad disponible
+    postal_code VARCHAR(20) NULL,             -- Puede ser NULL si no hay código postal disponible
+    address VARCHAR(255) NULL                 -- Puede ser NULL si no hay dirección disponible
 );
-
 ```
 
 ![Sql Creacion tabla Users](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje05.PNG)
+
+
+## Sql de Tabla `products`
+
+```sql
+-- Creacion de la tabla tarjetas_credito
+
+CREATE TABLE products (
+    id INT NOT NULL PRIMARY KEY,              -- Identificador único
+    product_name VARCHAR(255) NOT NULL,       -- El nombre del producto no puede ser NULL
+    price DECIMAL(10, 2) NOT NULL,            -- El precio no puede ser NULL
+    color VARCHAR(7) NULL,                    -- Puede ser NULL si no hay color disponible
+    weight DECIMAL(5, 2) NULL,                -- Puede ser NULL si no hay peso disponible
+    warehouse_id VARCHAR(10) NULL             -- Puede ser NULL si no hay almacén asociado
+);
+```
+
+![Sql Creacion tabla Users](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/TableProducts.PNG)
+
+## Importacion de datos `Transactions` `companies` `companies`  `credit_card_data`  `users`  `products`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
