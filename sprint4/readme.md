@@ -131,8 +131,6 @@ CREATE TABLE products (
 ## Importacion de datos `Transactions` `companies` `companies`  `credit_card_data`  `users`  `products`
 
 
-### Configuración de la carpeta de uploads en MySQL
-
 Configurar la carpeta `C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/` en MySQL y copiar los archivos necesarios para la carga de datos.
 
 ### Paso 1: Ubicar la carpeta de donde se importa por inercia
@@ -172,33 +170,39 @@ Asegúrate de que el servicio MySQL tiene permisos adecuados para acceder y leer
 
 
 
+### Paso 3: Reiniciar MySQL desde Windows Power Shell como administrador
 
+1. Abre Windows PowerShell como administrador.
+2. Detén el servicio MySQL con el comando:
+```bash
 
-![Copia de archivos CSV](ruta/a/tu/imagen3.png)
+net stop Mysql80
 
-## Configuración de `secure-file-priv` en MySQL
+```
+3.  Inicia el servicio MySQL nuevamente con el comando:
 
-El parámetro `secure-file-priv` de MySQL restringe las operaciones de lectura y escritura de archivos a una carpeta específica para evitar posibles riesgos de seguridad.
+```bash
 
-### Paso 1: Verificar la configuración actual
+net start Mysql80
 
-Puedes verificar el valor actual de `secure-file-priv` ejecutando el siguiente comando en MySQL:
-
-```sql
-SHOW VARIABLES LIKE 'secure_file_priv';
 ```
 
-#### Paso 1: Verificar la configuración actual
+Esto reinicia MySQL para aplicar cualquier cambio en la configuración.
 
-Verificación de la configuración
-Una vez que hayas configurado la carpeta Uploads y modificado el archivo de configuración, puedes verificar si MySQL es capaz de leer archivos desde la carpeta Uploads.
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/tu_archivo.csv'
-INTO TABLE tu_tabla
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
+![Reiniciar Mysql](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/reiniciarMysql.PNG)
+
+
+
+## Importacion de datos a la tabla `Transactions`
+
+```sql 
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/transactions.csv' ---- ubicacion del archivo
+INTO TABLE transactions                                                           ----- selecion tabla 
+FIELDS TERMINATED BY ','                                                          ----- , separacion entre campos 
+ENCLOSED BY '"'                                                                    -----  
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
-
+```
 
 
 
