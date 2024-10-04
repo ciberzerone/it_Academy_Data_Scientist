@@ -131,9 +131,79 @@ CREATE TABLE products (
 ## Importacion de datos `Transactions` `companies` `companies`  `credit_card_data`  `users`  `products`
 
 
+### Configuración de la carpeta de uploads en MySQL
+
+Configurar la carpeta `C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/` en MySQL y copiar los archivos necesarios para la carga de datos.
+
+### Paso 1: Ubicar la carpeta de donde se importa por inercia
+
+```sql
+SHOW VARIABLES LIKE 'secure_file_priv';
+```
+Para saber la ubicación de la carpeta C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\' donde ir los archivos csv para ser importados
 
 
 
+- **MySQL 8.0**: Asegúrate de que MySQL 8.0 está correctamente instalado en tu sistema.
+- **Archivos CSV**: Los archivos de datos a cargar deben estar disponibles en formato CSV.
+
+## Configuración de la carpeta `Uploads`
+
+### Paso 1: Localizar la carpeta `Uploads`
+
+La carpeta `Uploads` de MySQL suele encontrarse en la siguiente ubicación en sistemas Windows:
+
+![Ubicacion de la carpeta](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/TpermisoCarpetaSql.PNG)
+
+### Paso 2: Configuración de permisos la carpeta
+
+Asegúrate de que el servicio MySQL tiene permisos adecuados para acceder y leer archivos en la carpeta `Uploads`.
+
+1. Haz clic derecho en la carpeta `Uploads`.
+2. Selecciona **Propiedades** y ve a la pestaña **Seguridad**.
+3. Asegúrate de que el usuario que ejecuta MySQL (normalmente `NT AUTHORITY\SYSTEM` o `mysql`) tiene permisos de **lectura** y **escritura**.
+
+
+
+![Permisos carpeta Upload](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/permisoCarpeta.PNG)
+
+
+### Paso 3: Copiar  y pegar los archivos csv en la carpeta Upload
+
+1. Abre el explorador de archivos y navega a `C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/`.
+2. Copia los archivos CSV que deseas cargar desde tu ubicación original a la carpeta `Uploads`.
+
+
+![Permisos carpeta Upload](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/permisoCarpeta02.PNG)
+
+
+
+
+
+![Copia de archivos CSV](ruta/a/tu/imagen3.png)
+
+## Configuración de `secure-file-priv` en MySQL
+
+El parámetro `secure-file-priv` de MySQL restringe las operaciones de lectura y escritura de archivos a una carpeta específica para evitar posibles riesgos de seguridad.
+
+### Paso 1: Verificar la configuración actual
+
+Puedes verificar el valor actual de `secure-file-priv` ejecutando el siguiente comando en MySQL:
+
+```sql
+SHOW VARIABLES LIKE 'secure_file_priv';
+```
+
+#### Paso 1: Verificar la configuración actual
+
+Verificación de la configuración
+Una vez que hayas configurado la carpeta Uploads y modificado el archivo de configuración, puedes verificar si MySQL es capaz de leer archivos desde la carpeta Uploads.
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/tu_archivo.csv'
+INTO TABLE tu_tabla
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
 
 
 
