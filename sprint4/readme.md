@@ -196,17 +196,18 @@ Esto reinicia MySQL para aplicar cualquier cambio en la configuración.
 ## Importacion de datos a la tabla `Transactions`
 
 ```sql 
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/transactions.csv' ---- ubicacion del archivo
-INTO TABLE transactions                                                           ----- selecion tabla 
-FIELDS TERMINATED BY ','                                                          ----- , separacion entre campos 
-ENCLOSED BY '"'                                                                    -----  
-LINES TERMINATED BY '\n'
-IGNORE 1 LINES;
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/transactions.csv' ---- Especifica que se está cargando datos desde un archivo
+INTO TABLE transactions                                                           ----- Define que los datos se insertarán en la tabla transactions.
+FIELDS TERMINATED BY ','                                                          ----- Especifica que los campos en el archivo CSV están separados por punto y coma (;).
+ENCLOSED BY '"'                                                                    -----  Indica que los valores de los campos están encerrados entre comillas dobles (").
+LINES TERMINATED BY '\n'                                                          -----Indica que cada línea en el archivo está separada por un salto de línea (\n)
+IGNORE 1 LINES                                                                    -----  ignorar la primera línea del archivo, que contiene los encabezados de las columnas.
+(id, card_id, business_id, timestamp, amount, declined, product_ids, user_id, lat, longitude);  -----Mapea las columnas del archivo CSV a las columnas correspondientes de la tabla
 ```
 
 
 
-
+![Reiniciar Mysql](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/insertTransactions.PNG)
 
 
 
