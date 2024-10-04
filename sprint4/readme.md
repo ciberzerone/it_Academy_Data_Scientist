@@ -153,7 +153,7 @@ Para saber la ubicación de la carpeta C:\\ProgramData\\MySQL\\MySQL Server 8.0\
 
 La carpeta `Uploads` de MySQL suele encontrarse en la siguiente ubicación en sistemas Windows:
 
-![Ubicacion de la carpeta](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/TpermisoCarpetaSql.PNG)
+![Ubicacion de la carpeta](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/permisoCarpetaSql.PNG)
 
 ### Paso 2: Configuración de permisos la carpeta
 
