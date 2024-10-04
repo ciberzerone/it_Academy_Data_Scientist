@@ -137,19 +137,13 @@ Configurar la carpeta `C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/` en MySQL 
 
 ### Paso 1: Ubicar la carpeta de donde se importa por inercia
 
+- **MySQL 8.0**: Asegúrate de que MySQL 8.0 está correctamente instalado en tu sistema.
+- **Archivos CSV**: Los archivos de datos a cargar deben estar disponibles en formato CSV.
+
 ```sql
 SHOW VARIABLES LIKE 'secure_file_priv';
 ```
 Para saber la ubicación de la carpeta C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\' donde ir los archivos csv para ser importados
-
-
-
-- **MySQL 8.0**: Asegúrate de que MySQL 8.0 está correctamente instalado en tu sistema.
-- **Archivos CSV**: Los archivos de datos a cargar deben estar disponibles en formato CSV.
-
-## Configuración de la carpeta `Uploads`
-
-### Paso 1: Localizar la carpeta `Uploads`
 
 La carpeta `Uploads` de MySQL suele encontrarse en la siguiente ubicación en sistemas Windows:
 
