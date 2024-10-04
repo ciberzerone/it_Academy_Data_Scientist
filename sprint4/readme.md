@@ -16,8 +16,8 @@ Diseña una base de datos con un esquema de estrella que contenga, al menos 4 ta
 ```sql
 -- Creacion base de datos proyecto_db
 
-CREATE DATABASE proyecto_db;
-USE proyecto_db;
+CREATE DATABASE IF NOT EXISTS sprint4;
+use sprint4;
 
 ```
 ![Sql Creacion Base de datos](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje01.PNG)
@@ -32,22 +32,21 @@ Tablas Dimensión: usuarios, productos, y tarjetas_credito.
 -- Creacion de la tabla transacciones
 
 CREATE TABLE transactions (
-    id    VARCHAR(36) NOT NULL  PRIMARY KEY,
-    card_id VARCHAR(50),
-    business_id VARCHAR(50),
-    timestamp TIMESTAMP,
-    amount DECIMAL(10, 2),
-    declined BOOLEAN,
-    product_ids TEXT, 
-    user_id INT,
-    lat DECIMAL(15, 10),
-    longitude DECIMAL(15, 10)
-    );
-
+    id VARCHAR(50) NOT NULL PRIMARY KEY,  -- Basado en IDs alfanuméricos grandes
+    card_id VARCHAR(50),                  -- Similar a los IDs
+    business_id VARCHAR(50),              -- Similar a los IDs
+    timestamp TIMESTAMP,                  -- Fecha y hora de la transacción
+    amount DECIMAL(10, 2),                -- Valores monetarios con 2 decimales
+    declined BOOLEAN,                     -- True (T) o False (F)
+    product_ids TEXT,                     -- Lista de product_ids en texto
+    user_id INT,                          -- Identificador del usuario
+    lat DECIMAL(15, 10),                  -- Latitud con precisión suficiente
+    longitude DECIMAL(15, 10)             -- Longitud con precisión suficiente
+);
 
 ```
 
-![Sql Creacion tabla transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje02.PNG)
+![Sql Creacion tabla transacciones](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/0.PNG)
 
 ## Sql de Tabla `companies`
 
