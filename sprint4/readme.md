@@ -455,3 +455,16 @@ GROUP BY cc.iban;
 
 
 ![Sql  media de amount por IBAN de las tarjetas de crédito en la compañía Donec Ltd](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje09.PNG)
+
+<hr>
+
+## Author
+
+### Nombre
+**Yimmy Beltran**
+
+## Información de Contacto
+
+- **LinkedIn**: [https://www.linkedin.com/in/gianmarco-beltran-13959b232/](https://www.linkedin.com/in/gianmarco-beltran-13959b232/)
+- **GitHub**: [https://github.com/ciberzerone](https://github.com/ciberzerone)
+- **Correo Electrónico**: [gianmarcobeltran@gmail.com](mailto:gianmarcobeltran@gmail.com)
