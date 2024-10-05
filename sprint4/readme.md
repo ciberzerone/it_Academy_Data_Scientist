@@ -5,7 +5,7 @@
 
 [Ver script de SQL](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/sql/script.sql)
 
-[Ver Sprint 4 en PDF](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint3/pdf/sprint4.pdf)
+[Ver Sprint 4 en PDF](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/pdf/sprint4.pdf)
 
 ![Nivel 1](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint2/imagen/nivel1.png)
 
