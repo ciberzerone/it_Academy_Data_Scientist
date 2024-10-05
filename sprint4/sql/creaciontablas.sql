@@ -57,6 +57,33 @@ CREATE TABLE products (
     warehouse_id VARCHAR(10) NULL             -- Puede ser NULL si no hay almacén asociado
 );
 
+-- Importacion de datos a la tabla `Transactions`
+-- Especifica que se está cargando datos desde un archivo  
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/transactions.csv' 
+-- Define que los datos se insertarán en la tabla transactions.
+INTO TABLE transactions                                                           
+-- Especifica que los campos en el archivo CSV están separados por punto y coma (;).
+FIELDS TERMINATED BY ','                                                          
+--  Indica que los valores de los campos están encerrados entre comillas dobles (").
+ENCLOSED BY '"'                                                                    
+-- Indica que cada línea en el archivo está separada por un salto de línea (\n)
+LINES TERMINATED BY '\n'                                                          
+--  ignorar la primera línea del archivo, que contiene los encabezados de las columnas.
+IGNORE 1 LINES                                                                    
+-- Mapea las columnas del archivo CSV a las columnas correspondientes de la tabla
+(id, card_id, business_id, timestamp, amount, declined, product_ids, user_id, lat, longitude);  
+
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/credit_card_data.csv'
+INTO TABLE credit_card_data
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(id, user_id, iban, pan, pin, cvv, track1_data, track2_data, @expiring_date)
+SET expiring_date = STR_TO_DATE(@expiring_date, '%m/%d/%y');
+
+
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/products.csv'
 INTO TABLE products
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
@@ -65,11 +92,6 @@ IGNORE 1 LINES
 (id, product_name, @price, color, weight, warehouse_id)
 SET price = REPLACE(@price, '$', '');
 
-
-describe users;
-truncate users;
-
-CREATE TEMPORARY TABLE temp_users LIKE users;
 
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/users_usa_cleaned.csv'
 INTO TABLE users
@@ -93,55 +115,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES 
 (id, name, surname, phone, email, birth_date, country, city, postal_code, address);
 
-
-
-
-
-
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/credit_card_data.csv'
-INTO TABLE credit_card_data
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 LINES
-(id, user_id, iban, pan, pin, cvv, track1_data, track2_data, @expiring_date)
-SET expiring_date = STR_TO_DATE(@expiring_date, '%m/%d/%y');
-
-
-
-
-
-ALTER TABLE users MODIFY id INT NOT NULL;
-
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/credit_card_data.csv'
-INTO TABLE credit_card_data
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 LINES
-(company_id, company_name, phone, email, country, website);
-
-drop table companies;
-
-DESCRIBE companies;
-
-ALTER TABLE companies MODIFY company_id VARCHAR(150);
-
--- Creacion de la tabla companies
-
-
-ALTER TABLE transactions
-DROP FOREIGN KEY fk_transactions_user_id;
-
-ALTER TABLE transactions
-DROP FOREIGN KEY fk_transactions_card_id;
-
-ALTER TABLE transactions
-DROP FOREIGN KEY fk_transactions_business_id;
-
-ALTER TABLE credit_card_data
-DROP FOREIGN KEY fk_credit_card_user_id;
-
+-- Dar Esquema Estrella
 
 -- Agregar clave foránea para `user_id` que referencia a la tabla `users`
 ALTER TABLE transactions
@@ -158,4 +132,22 @@ ALTER TABLE transactions
 ADD CONSTRAINT fk_business
 FOREIGN KEY (business_id) REFERENCES companies(company_id);
 
+-- ejercicio # 1
+SELECT u.id, u.name, u.surname, COUNT(t.id) AS total_transactions
+FROM users u
+JOIN transactions t ON u.id = t.user_id
+GROUP BY u.id, u.name, u.surname
+HAVING COUNT(t.id) > 30
+LIMIT 0, 100;
 
+
+-- ejercicio # 2
+
+SELECT co.company_name,
+       cc.iban,
+       ROUND(AVG(t.amount), 2) AS promedio_suma_transacciones
+FROM companies co
+INNER JOIN transactions t ON co.company_id = t.business_id
+INNER JOIN credit_card_data cc ON t.card_id = cc.id
+WHERE co.company_name = 'Donec Ltd'
+GROUP BY cc.iban;
