@@ -54,7 +54,7 @@ CREATE TABLE transactions (
 -- Creacion de la tabla companies
 
 CREATE TABLE companies (
-    company_id VARCHAR(6) NOT NULL PRIMARY KEY,  -- Identificador único de la compañía
+    company_id VARCHAR(150) NOT NULL PRIMARY KEY,  -- Identificador único de la compañía
     company_name VARCHAR(100) NOT NULL,          -- Nombre de la compañía es obligatorio
     phone VARCHAR(20) NULL,                      -- Puede ser NULL si no hay teléfono disponible
     email VARCHAR(100) NULL,                     -- Puede ser NULL si no hay email disponible
@@ -114,7 +114,7 @@ CREATE TABLE users (
 ## Sql de Tabla `products`
 
 ```sql
--- Creacion de la tabla tarjetas_credito
+-- Creacion de la tabla products
 
 CREATE TABLE products (
     id INT NOT NULL PRIMARY KEY,              -- Identificador único
@@ -209,13 +209,89 @@ IGNORE 1 LINES                                                                  
 
 
 
+## Importacion de datos a la tabla `Companies`
+
+```sql 
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/companies.csv'
+INTO TABLE companies
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(company_id, company_name, phone, email, country, website);
+```
+
+![Importacion de datos a la tabla Companies](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/insertCompanies.PNG)
 
 
 
+## Importacion de datos a la tabla `credit_card_data`
+
+```sql 
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/credit_card_data.csv'
+INTO TABLE credit_card_data
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(id, user_id, iban, pan, pin, cvv, track1_data, track2_data, @expiring_date)
+SET expiring_date = STR_TO_DATE(@expiring_date, '%m/%d/%y');
+```
+
+![Importacion de datos a la tabla credit_card_data](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/insertCredit_card_data.PNG)
 
 
+## Importacion de datos a la tabla `Products`
+
+```sql 
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/products.csv'
+INTO TABLE users
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES 
+(id, name, surname, phone, email, birth_date, country, city, postal_code, address);
+```
+
+![Importacion de datos a la tabla Users](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/insertProducts.PNG)
 
 
+## Importacion de datos a la tabla `Users`
+
+- Se utilizo para python para retirar las "" y las comillas en algunos registros de la columna `address`
+- Se utilizo para python para darle formato %d-%b-%y a los registros de la columna `birth_date`
+- Luego se procedio a importar los datos a la tabla `Users`.
+
+
+```sql 
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/users_usa_cleaned.csv'
+INTO TABLE users
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES 
+(id, name, surname, phone, email, birth_date, country, city, postal_code, address);
+
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/users_uk_cleaned.csv'
+INTO TABLE users
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES 
+(id, name, surname, phone, email, birth_date, country, city, postal_code, address);
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/users_ca_cleaned.csv'
+INTO TABLE users
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES 
+(id, name, surname, phone, email, birth_date, country, city, postal_code, address);
+```
+
+![Importacion de datos a la tabla Users - parte Usa](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/insertUsersUsa.PNG)
+
+![Importacion de datos a la tabla Users - parte Canada](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/insertUsersCa.PNG)
+
+![Importacion de datos a la tabla Users - parte Uk](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/insertUsersUk.PNG)
 
 
 ## Esquema estrella de la base de datos
@@ -256,12 +332,12 @@ FOREIGN KEY (business_id) REFERENCES companies(company_id);
 
 
 
-# Ejercicio 1:
+## Ejercicio 1:
 
-## Realiza una subconsulta que muestre a todos los usuarios con más de 30 transacciones utilizando al menos 2 tablas.
+### Realiza una subconsulta que muestre a todos los usuarios con más de 30 transacciones utilizando al menos 2 tablas.
 
 
-## Sql de tabla Usuarios con más de 30 transacciones
+### Sql de tabla Usuarios con más de 30 transacciones
 
 ```sql
 -- Usuarios con más de 30 transacciones
@@ -273,12 +349,12 @@ HAVING COUNT(t.id) > 30
 LIMIT 0, 5000;
 ```
 
-### Explicación del Sql
+#### Explicación del Sql
 
-El objetivo de la consulta es obtener una lista de usuarios que han realizado más de 30 transacciones. Para ello, se cuenta la cantidad de transacciones de cada usuario, y solo aquellos usuarios que cumplen con este criterio son incluidos en los resultados. Además, se limita el resultado a un máximo de 5000 registros.
+El objetivo de la consulta es obtener una lista de usuarios que han realizado más de 30 transacciones. Para ello, se cuenta la cantidad de transacciones de cada usuario, y solo aquellos usuarios que cumplen con este criterio son incluidos en los resultados. Además, se limita el resultado a un máximo de 100 registros.
 
 
-#### Paso a paso:
+##### Paso a paso:
 
 1. **Inicio de la consulta**  
    - Definir las columnas a seleccionar:
@@ -323,7 +399,7 @@ El objetivo de la consulta es obtener una lista de usuarios que han realizado m�
    - Limitar el número de resultados a 5000, comenzando desde el primer resultado. Esto mejora el rendimiento y evita sobrecargar el sistema si hay muchos usuarios.
 
     ```sql
-    LIMIT 0, 5000;
+    LIMIT 0, 100;
     ```
 
 
@@ -334,19 +410,48 @@ El objetivo de la consulta es obtener una lista de usuarios que han realizado m�
 
 
 
-# Ejercicio 2:
+## Ejercicio 2:
 
-## Muestra la media de amount por IBAN de las tarjetas de crédito en la compañía Donec Ltd., utiliza por lo menos 2 tablas.
+### Muestra la media de amount por IBAN de las tarjetas de crédito en la compañía Donec Ltd., utiliza por lo menos 2 tablas.
 
 
-## Sql de tabla Usuarios con más de 30 transacciones
+### Sql de tabla Usuarios con más de 30 transacciones
 
 ```sql
--- Usuarios con más de 30 transacciones
-SELECT u.id, u.name, u.surname, COUNT(t.id) AS transaction_count
-FROM users u
-JOIN transactions t ON u.id = t.user_id
-GROUP BY u.id, u.name, u.surname
-HAVING COUNT(t.id) > 30
-LIMIT 0, 5000;
+-- media de amount por IBAN de las tarjetas de crédito en la compañía Donec Ltd
+SELECT co.company_name,
+       cc.iban,
+       ROUND(AVG(t.amount), 2) AS promedio_suma_transacciones
+FROM companies co
+INNER JOIN transactions t ON co.company_id = t.business_id
+INNER JOIN credit_card_data cc ON t.card_id = cc.id
+WHERE co.company_name = 'Donec Ltd'
+GROUP BY cc.iban;
 ```
+#### Explicación del SQL
+
+##### Paso a paso:
+
+1. **`SELECT co.company_name, cc.iban, ROUND(AVG(t.amount), 2) AS promedio_suma_transacciones`:**
+   - **Objetivo:** Seleccionar los siguientes campos:
+     - `co.company_name`: El nombre de la compañía.
+     - `cc.iban`: El IBAN de las tarjetas de crédito.
+     - `ROUND(AVG(t.amount), 2)`: Calcular el promedio de los montos (`amount`) de las transacciones, redondeado a 2 decimales.
+
+2. **`FROM companies co`:**
+   - **Objetivo:** Se define la tabla principal `companies` y se le asigna el alias `co`.
+
+3. **`INNER JOIN transactions t ON co.company_id = t.business_id`:**
+   - **Objetivo:** Realizar un `INNER JOIN` entre las tablas `companies` y `transactions`, donde `company_id` en `companies` coincida con `business_id` en `transactions`. Esto permite relacionar las transacciones con las compañías.
+
+4. **`INNER JOIN credit_card_data cc ON t.card_id = cc.id`:**
+   - **Objetivo:** Realizar un `INNER JOIN` entre las tablas `transactions` y `credit_card_data`, usando `t.card_id = cc.id`. Esto permite acceder a los datos de las tarjetas de crédito, en particular al `IBAN`.
+
+5. **`WHERE co.company_name = 'Donec Ltd'`:**
+   - **Objetivo:** Filtrar las filas para que solo se incluyan las transacciones que están asociadas con la compañía cuyo nombre es 'Donec Ltd.'.
+
+6. **`GROUP BY cc.iban`:**
+   - **Objetivo:** Agrupar los resultados por el `IBAN` de las tarjetas de crédito (`cc.iban`). Cada grupo representa un conjunto de transacciones realizadas con el mismo IBAN.
+
+
+![Sql  media de amount por IBAN de las tarjetas de crédito en la compañía Donec Ltd](https://github.com/ciberzerone/it_Academy_Data_Scientist/blob/main/sprint4/imagen/eje09.PNG)
